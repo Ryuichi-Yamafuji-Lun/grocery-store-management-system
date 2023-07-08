@@ -1,8 +1,9 @@
+import LoginForm from "./componenets/LoginForm";
 
 function App() {
   return (
-    <div className="App">
-      
+    <div className="page">
+      <LoginForm />
     </div>
   );
 }
