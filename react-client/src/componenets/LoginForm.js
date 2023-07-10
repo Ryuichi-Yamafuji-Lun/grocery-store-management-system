@@ -10,23 +10,22 @@ const LoginForm = () => {
 
   return (
     <div className="login-page">
+      <form className="login-form">
         <h1>Login</h1>
         <input type="text" placeholder="username"/>
         <input type="password" placeholder="password"/>
-
         <div className="login-btn" onClick={popup}>Login</div>
+      </form>
+      <p className="text">Or login using</p>
+      <div className="alt-login">
+          <div className="facebook"></div>
+          <div className="google"></div>
+      </div>
 
-        <p className="text">Or login using</p>
-
-        <div className="alt-login">
-            <div className="facebook"></div>
-            <div className="google"></div>
-        </div>
-
-        <div className={popupStyle}>
-          <h3>Login Failed</h3>
-          <p>Username or Password is Incorrect</p>
-        </div>
+      <div className={popupStyle}>
+        <h3>Login Failed</h3>
+        <p>Username or Password is Incorrect</p>
+      </div>
     </div>
   )
 }
