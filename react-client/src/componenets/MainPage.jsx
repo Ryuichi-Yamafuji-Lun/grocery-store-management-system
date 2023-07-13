@@ -3,10 +3,14 @@
 const MainPage = () => {
   return (
     <div name='main' className="w-full h-screen">
-      <div className="max-w-[1000px] mx-auto flex flex-row justify-center h-full">
-        <h1>Orders</h1>
-        <button>Manage</button>
-        <button>New Order</button>
+      <div className=" mx-auto flex flex-row justify-between items-center p-4">
+        <div className="text-4xl">
+          Orders
+        </div>
+        <div>
+          <a href="/manageproducts" className="bg-[#204e93] text-gray-100 py-2 px-3 mx-2 transition hover: scale-115 ">Manage</a>
+          <a href="/neworder" className="bg-[#204e93] text-gray-100 py-2 px-3 mx-2 transition hover: scale-115 ">New Orders</a>
+        </div>        
       </div>
     </div>
   )

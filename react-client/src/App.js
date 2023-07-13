@@ -6,6 +6,7 @@ import Register from "./componenets/Register";
 import MainPage from "./componenets/MainPage";
 import CustomerOrder from "./componenets/CustomerOrder";
 import { Routes, Route } from 'react-router-dom';
+import NewOrder from "./componenets/NewOrder";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/mainpage' element={<MainPage />} />
         <Route path='/manageproducts' element={<ManageProducts />} />
+        <Route path='/neworder' element={<NewOrder />} />
         <Route path='/customerorder' element={<CustomerOrder />} />
       </Routes>     
     </div>

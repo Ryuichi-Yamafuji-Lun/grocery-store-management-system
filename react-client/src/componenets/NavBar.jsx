@@ -6,15 +6,18 @@ const NavBar = () => {
   const handleClick = () => setNav(!nav)
 
   return (
-    <div className='fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#204e93] text-gray-100'>
+    <div className='sticky top-0 z-50 w-full h-[80px] flex justify-between items-center px-4 bg-[#204e93] text-gray-100'>
       <div>
-        GSMS
+        <a href="/mainpage">GSMS</a>
       </div>
       {/* menu */}
       <ul className="hidden md:flex">
-        <li>Home</li>
-        <li>Login</li>
-        <li>Profile</li>
+        <li>
+          <a href="/mainpage">Home</a>
+        </li>
+        <li>
+          <a href="/login">Login</a>
+        </li>
       </ul>
 
       {/* Hamburger */}
@@ -25,9 +28,13 @@ const NavBar = () => {
 
       {/* Mobile Menu */}
       <ul className={!nav ? 'hidden' : "absolute top-0 left-0 w-full h-screen bg-[#204e93] flex flex-col justify-center items-center"}>
-        <li className="py-6 test-4xl">Home</li>
-        <li className="py-6 test-4xl">Login</li>
-        <li className="py-6 test-4xl">Profile</li>
+        <li className="py-6 test-4xl">
+          <a href="/mainpage">Home</a>
+        </li>
+        <li className="py-6 test-4xl">
+          <a href="/login">Login</a>
+        </li>
+        <li className="py-6 test-4xl">About</li>
       </ul>
     </div>
 
