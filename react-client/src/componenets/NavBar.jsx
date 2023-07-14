@@ -1,3 +1,4 @@
+import AuthenticationButton from "./AuthnticationButton";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useState } from "react";
 
@@ -16,7 +17,7 @@ const NavBar = () => {
           <a href="/mainpage">Home</a>
         </li>
         <li>
-          <a href="/login">Login</a>
+          <AuthenticationButton />
         </li>
       </ul>
 
@@ -32,7 +33,7 @@ const NavBar = () => {
           <a href="/mainpage">Home</a>
         </li>
         <li className="py-6 test-4xl">
-          <a href="/login">Login</a>
+          <AuthenticationButton />
         </li>
         <li className="py-6 test-4xl">About</li>
       </ul>
