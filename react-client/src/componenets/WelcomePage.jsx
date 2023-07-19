@@ -1,5 +1,6 @@
 
 const WelcomePage = () => {
+  
   return (
     <div className="w-full h-screen"> 
       <div className="max-w-[1000px] mx-auto px-8 flex items-center flex-col justify-center h-full">
