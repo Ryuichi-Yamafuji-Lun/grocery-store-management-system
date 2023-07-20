@@ -1,7 +1,20 @@
-
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const MainPage = () => {
-
+  const [data, setData] = useState([{}])
+  
+  useEffect(() => {
+    const backendURL = process.env.REACT_APP_BACKEND_URL;
+    axios.get(`${backendURL}/getProducts`).then(
+      response => {
+        setData(response.data)
+      }
+    ).catch(error => {
+      console.error("Error fetching data:", error);
+    });
+  }, [])
+  
 
   return (
     <div name='main' className="w-full h-screen">
@@ -15,17 +28,24 @@ const MainPage = () => {
         </div>        
       </div>
       <div className="mx-auto flex flex-row justify-center items-center p-4">
-        <table className="shadow-lg bg-white">
+        <table className="shadow-lg bg-white w-full">
           <thead>
-            <tr>
-              <th className="bg-blue-100 border text-center px-8 py-4">Date</th>
-              <th className="bg-blue-100 border text-center px-8 py-4">Order #</th>
-              <th className="bg-blue-100 border text-center px-8 py-4">Customer</th>
-              <th className="bg-blue-100 border text-center px-8 py-4">Total Cost</th>
+            <tr className="bg-blue-100">
+              <th className="border text-center px-8 py-4">Date</th>
+              <th className="border text-center px-8 py-4">Order #</th>
+              <th className="border text-center px-8 py-4">Customer</th>
+              <th className="border text-center px-8 py-4">Total Cost</th>
             </tr>
           </thead>
           <tbody>
-            
+            {data.map(data => (
+              <tr key = { data.product_id }>
+                <td className="py-2 px-4 text-center">{data.product_id}</td>
+                <td className="py-2 px-4 text-center">{data.name}</td>
+                <td className="py-2 px-4 text-center">{data.uom_name}</td>
+                <td className="py-2 px-4 text-center">{data.price_per_unit}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

@@ -6,23 +6,11 @@ import MainPage from "./componenets/MainPage";
 import CustomerOrder from "./componenets/CustomerOrder";
 import NewOrder from "./componenets/NewOrder";
 import { Routes, Route } from 'react-router-dom';
-import { useState, useEffect } from "react";
+
 
 
 function App() {
-  const [data, setData] = useState([{}])
 
-  useEffect(() => {
-    fetch("/getProducts").then(
-      response => response.json()
-    ).then(
-      responseJson => {
-        setData(responseJson)
-        console.log(responseJson);
-      } 
-    )
-  }, [])
-  
   return (
     <div>
       <NavBar />
