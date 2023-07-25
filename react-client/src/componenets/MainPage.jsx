@@ -6,7 +6,7 @@ const MainPage = () => {
   
   useEffect(() => {
     const backendURL = process.env.REACT_APP_BACKEND_URL;
-    axios.get(`${backendURL}/getProducts`).then(
+    axios.get(`${backendURL}/getAllOrders`).then(
       response => {
         setData(response.data)
       }
@@ -23,7 +23,7 @@ const MainPage = () => {
           Orders
         </div>
         <div>
-          <a href="/manageproducts" className="bg-[#204e93] text-gray-100 py-2 px-3 mx-2 transition hover: scale-115 ">Manage</a>
+          <a href="/manageproducts" className="bg-[#204e93] text-gray-100 py-2 px-3 mx-2 transition hover: scale-115 ">Manage Products</a>
           <a href="/neworder" className="bg-[#204e93] text-gray-100 py-2 px-3 mx-2 transition hover: scale-115 ">New Orders</a>
         </div>        
       </div>
@@ -39,11 +39,11 @@ const MainPage = () => {
           </thead>
           <tbody>
             {data.map(data => (
-              <tr key = { data.product_id }>
-                <td className="py-2 px-4 text-center">{data.product_id}</td>
-                <td className="py-2 px-4 text-center">{data.name}</td>
-                <td className="py-2 px-4 text-center">{data.uom_name}</td>
-                <td className="py-2 px-4 text-center">{data.price_per_unit}</td>
+              <tr key = { data.order_id }>
+                <td className="py-2 px-4 text-center">{data.datetime}</td>
+                <td className="py-2 px-4 text-center">{data.order_id}</td>
+                <td className="py-2 px-4 text-center">{data.customer_name}</td>
+                <td className="py-2 px-4 text-center">{data.total}</td>
               </tr>
             ))}
           </tbody>

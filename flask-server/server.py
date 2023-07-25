@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-import products_dao
+from DataAccess import products_dao, orders_dao
 from sql_connection import get_mysql_connection
 
 app = Flask(__name__)
@@ -53,6 +53,21 @@ def delete_product(product_id):
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+    
+@app.route('/getAllOrders', methods=['GET'])
+def get_all_orders():
+    connection = get_mysql_connection()
+    if connection is None:
+        return jsonify({"error": "Database connection error"}), 500
+    
+    orders = orders_dao.get_all_orders(connection)
+    connection.close()
+
+    if "error" in orders:
+        return jsonify(orders), 500
+    
+    return jsonify(orders)
+
 
 if __name__ == "__main__":
     app.run(port=8080, debug=True)
