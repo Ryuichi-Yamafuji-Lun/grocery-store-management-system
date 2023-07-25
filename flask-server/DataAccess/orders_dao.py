@@ -16,7 +16,7 @@ def get_all_orders(connection):
                   'order_id': order_id,
                   'customer_name': customer_name,
                   'total': total,
-                  'datetime': date,
+                  'date': date.strftime('%m-%d-%Y'),
              })
         
         cursor.close()
