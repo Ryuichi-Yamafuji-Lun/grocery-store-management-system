@@ -1,10 +1,12 @@
 import NavBar from "./componenets/NavBar";
 import ManageProducts from "./componenets/ManageProducts";
+import AddProduct from "./componenets/AddProduct";
 import WelcomePage from "./componenets/WelcomePage";
 import Register from "./componenets/Register";
 import MainPage from "./componenets/MainPage";
 import CustomerOrder from "./componenets/CustomerOrder";
 import NewOrder from "./componenets/NewOrder";
+import About from "./componenets/About";
 import { Routes, Route } from 'react-router-dom';
 
 
@@ -19,8 +21,10 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/mainpage' element={<MainPage />} />
         <Route path='/manageproducts' element={<ManageProducts />} />
+        <Route path='/addproduct' element={<AddProduct />} />
         <Route path='/neworder' element={<NewOrder />} />
         <Route path='/customerorder' element={<CustomerOrder />} />
+        <Route path='/about' element={<About />} />
       </Routes>     
     </div>
   );

@@ -35,7 +35,9 @@ const NavBar = () => {
         <li className="py-6 test-4xl">
           <AuthenticationButton />
         </li>
-        <li className="py-6 test-4xl">About</li>
+        <li className="py-6 test-4xl">
+          <a href="/about">About</a>
+        </li>
       </ul>
     </div>
 

@@ -23,7 +23,7 @@ const ManageProducts = () => {
           Manage Products
         </div>
         <div>
-          <a href="/manageproducts" className="bg-[#204e93] text-gray-100 py-2 px-3 mx-2 transition hover: scale-115 ">Add</a>
+          <a href="/addproduct" className="bg-[#204e93] text-gray-100 py-2 px-3 mx-2 transition hover: scale-115 ">Add</a>
         </div>        
       </div>
       <div className="mx-auto flex flex-row justify-center items-center p-4">
