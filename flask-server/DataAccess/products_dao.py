@@ -1,3 +1,4 @@
+#Products
 import mysql.connector
 
 def get_all_products(connection):
