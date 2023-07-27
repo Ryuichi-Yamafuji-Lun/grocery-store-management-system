@@ -13,7 +13,7 @@ const MainPage = () => {
     ).catch(error => {
       console.error("Error fetching data:", error);
     });
-  }, [])
+  }, []);
   
 
   return (
@@ -38,7 +38,7 @@ const MainPage = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map(data => (
+            {data.map( data => (
               <tr key = { data.order_id }>
                 <td className="py-2 px-4 text-center">{data.date}</td>
                 <td className="py-2 px-4 text-center">{data.order_id}</td>

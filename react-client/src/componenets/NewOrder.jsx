@@ -1,22 +1,22 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const NewOrder = () => {
-  const [data, setData] = useState([{}])
+  const [orders, setOrders] = useState([{}])
   
   useEffect(() => {
     const backendURL = process.env.REACT_APP_BACKEND_URL;
-    axios.get(`${backendURL}/getProducts`).then(
+    axios.get(`${backendURL}/getAllOrders`).then(
       response => {
-        setData(response.data)
+        setOrders(response.data)
       }
-    ).catch(error => {
+    ).catch( error => {
       console.error("Error fetching data:", error);
     });
-  }, [])
+  }, []);
 
   return (
-<div name='main' className="w-full h-screen">
+    <div name='main' className="w-full h-screen">
       <div className="mx-auto flex flex-row justify-between items-center p-4">
         <div className="text-4xl">
           New Order
@@ -33,12 +33,24 @@ const NewOrder = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map(data => (
-              <tr key = { data.product_id }>
-                <td className="py-2 px-4 text-center">{data.name}</td>
-                <td className="py-2 px-4 text-center">{data.uom_name}</td>
-                <td className="py-2 px-4 text-center">{data.price_per_unit}</td>
-              </tr>
+            {orders.map( order => (
+                // Necessary React Fragment to access array in order_detail
+                <React.Fragment key={order.order_id}>
+                {order.order_details &&
+                  order.order_details.map( orderDetail => (
+                    <tr key={orderDetail.order_id}>
+                      <td className="py-2 px-4 text-center">{orderDetail.product_name}</td>
+                      <td className="py-2 px-4 text-center">{orderDetail.price_per_unit}</td>
+                      <td className="py-2 px-4 text-center">{orderDetail.quantity}</td>
+                      <td className="py-2 px-4 text-center">{orderDetail.total_price}</td>
+                    </tr>
+                  ))}
+                {!order.order_details && (
+                  <tr>
+                    <td colSpan="4" className="text-center">No order details available.</td>
+                  </tr>
+                )}
+              </React.Fragment>
             ))}
           </tbody>
         </table>

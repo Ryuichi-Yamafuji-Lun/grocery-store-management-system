@@ -20,12 +20,9 @@ def get_all_orders(connection):
                     'customer_name': customer_name,
                     'total': total,
                     'date': format_date(date),
+                    'order_details': get_order_details(connection, order_id),
                 })
-
-            # Append order details in each order
-            for record in response:
-                record['order_details'] = get_order_details(connection, record['order_id'])
-
+            
             return response
 
     except mysql.connector.Error as e:

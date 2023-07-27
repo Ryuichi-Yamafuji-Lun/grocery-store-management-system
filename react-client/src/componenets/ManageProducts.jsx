@@ -3,18 +3,18 @@ import axios from "axios";
 
 const ManageProducts = () => {
   
-  const [data, setData] = useState([{}])
+  const [products, setProducts] = useState([{}])
   
   useEffect(() => {
     const backendURL = process.env.REACT_APP_BACKEND_URL;
     axios.get(`${backendURL}/getProducts`).then(
       response => {
-        setData(response.data)
+        setProducts(response.data)
       }
-    ).catch(error => {
+    ).catch( error => {
       console.error("Error fetching data:", error);
     });
-  }, [])
+  }, []);
 
   return (
 <div name='main' className="w-full h-screen">
@@ -36,11 +36,11 @@ const ManageProducts = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map(data => (
-              <tr key = { data.product_id }>
-                <td className="py-2 px-4 text-center">{data.name}</td>
-                <td className="py-2 px-4 text-center">{data.uom_name}</td>
-                <td className="py-2 px-4 text-center">{data.price_per_unit}</td>
+            {products.map( products => (
+              <tr key = { products.product_id }>
+                <td className="py-2 px-4 text-center">{products.name}</td>
+                <td className="py-2 px-4 text-center">{products.uom_name}</td>
+                <td className="py-2 px-4 text-center">{products.price_per_unit}</td>
               </tr>
             ))}
           </tbody>
