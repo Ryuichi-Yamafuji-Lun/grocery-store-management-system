@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const AddProduct = ({ onProductAdded }) => {
+const AddProduct = ({ onProductAdded, onCancel }) => {
   const [formData, setFormData] = useState({
     name: "",
     uom_id: "",
@@ -45,14 +45,16 @@ const AddProduct = ({ onProductAdded }) => {
       });
   };
 
-  const onCancel = () => {
+  const handleCancel = () => {
     // Hide the form and reset the form data when the "Cancel" button is clicked
     setFormData({
       name: "",
       uom_id: "",
       price_per_unit: "",
     });
-    onProductAdded(undefined); // Send undefined to hide the form in the parent component
+    if (onCancel) {
+      onCancel(); 
+    }
   };
 
   return (
@@ -106,7 +108,7 @@ const AddProduct = ({ onProductAdded }) => {
         <div className="flex justify-end">
         <button
             type="button"
-            onClick={ onCancel }
+            onClick={ handleCancel }
             className="bg-gray-200 px-4 py-2 mr-2 rounded-md hover:bg-gray-300 focus:outline-none"
           >
             Cancel
