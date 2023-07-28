@@ -54,3 +54,18 @@ def delete_product(connection, product_id):
 
     except mysql.connector.Error as e:
         raise Exception("Error executing MySQL DELETE query:", e) 
+    
+def update_product(connection, product_id, product_data):
+    try:
+        with connection.cursor() as cursor:
+            # SQL query to update an existing product in the 'products' table
+            query = ("UPDATE grocerystore.products SET name=%s, uom_id=%s, price_per_unit=%s "
+                     "WHERE product_id = %s")
+
+            data = (product_data['name'], product_data['uom_id'], product_data['price_per_unit'], product_id)
+
+            cursor.execute(query, data)
+            connection.commit()
+
+    except mysql.connector.Error as e:
+        raise Exception("Error executing MySQL UPDATE query:", e)

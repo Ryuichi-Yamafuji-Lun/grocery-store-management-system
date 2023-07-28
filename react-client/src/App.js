@@ -1,11 +1,11 @@
 import NavBar from "./componenets/NavBar";
-import ManageProducts from "./componenets/ManageProducts";
-import AddProduct from "./componenets/AddProduct";
+import ManageProducts from "./componenets/Product/ShowProducts";
+import AddProduct from "./componenets/Product/AddProduct";
 import WelcomePage from "./componenets/WelcomePage";
-import Register from "./componenets/Register";
+import Register from "./componenets/Login/Register";
 import MainPage from "./componenets/MainPage";
-import CustomerOrder from "./componenets/CustomerOrder";
-import NewOrder from "./componenets/NewOrder";
+import CustomerOrder from "./componenets/Orders/CustomerOrder";
+import NewOrder from "./componenets/Orders/NewOrder";
 import About from "./componenets/About";
 import { Routes, Route } from 'react-router-dom';
 

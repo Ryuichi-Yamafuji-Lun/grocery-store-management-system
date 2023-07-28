@@ -1,4 +1,4 @@
-import AuthenticationButton from "./AuthnticationButton";
+import AuthenticationButton from "./Login/AuthnticationButton";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useState } from "react";
 

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const ManageProducts = () => {
+const ShowProducts = () => {
   
   const [products, setProducts] = useState([{}])
   
@@ -50,4 +50,4 @@ const ManageProducts = () => {
   )
 }
 
-export default ManageProducts
+export default ShowProducts

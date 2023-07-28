@@ -70,6 +70,17 @@ def delete_product(connection, product_id):
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+    
+@app.route('/updateProduct/<int:product_id>', methods=['PUT'])
+@handle_db_connection
+def update_product(connection, product_id):
+    try:
+        product_data = request.get_json()
+        products_dao.update_product(connection, product_id, product_data)
+        return jsonify({"message": "Product updated successfully"}), 200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 # ORDERS
 @app.route('/getAllOrders', methods=['GET'])
