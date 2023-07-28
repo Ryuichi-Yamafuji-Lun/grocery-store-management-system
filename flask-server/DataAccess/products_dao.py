@@ -31,7 +31,7 @@ def insert_new_product(connection, product):
             # SQL query to insert a new product into the 'products' table
             query = ("INSERT INTO grocerystore.products (name, uom_id, price_per_unit) VALUES (%s, %s, %s)")
 
-            data = (product['product_name'], product['uom_id'], product['price_per_unit'])
+            data = (product['name'], product['uom_id'], product['price_per_unit'])
 
             cursor.execute(query, data)
             connection.commit()
@@ -40,7 +40,7 @@ def insert_new_product(connection, product):
             return cursor.lastrowid
 
     except mysql.connector.Error as e:
-        raise Exception("Error executing MySQL INSERT query:", e)  
+        raise Exception("Error executing MySQL INSERT query:", e)
 
 def delete_product(connection, product_id):
     try:

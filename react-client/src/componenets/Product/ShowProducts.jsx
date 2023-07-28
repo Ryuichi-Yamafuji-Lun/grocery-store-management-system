@@ -20,10 +20,10 @@ const ShowProducts = () => {
 <div name='main' className="w-full h-screen">
       <div className="mx-auto flex flex-row justify-between items-center p-4">
         <div className="text-4xl">
-          Manage Products
+          Products Available
         </div>
         <div>
-          <a href="/addproduct" className="bg-[#204e93] text-gray-100 py-2 px-3 mx-2 transition hover: scale-115 ">Add</a>
+          <a href="/manageproducts" className="bg-[#204e93] text-gray-100 py-2 px-3 mx-2 transition hover: scale-115 ">Manage Products</a>
         </div>        
       </div>
       <div className="mx-auto flex flex-row justify-center items-center p-4">

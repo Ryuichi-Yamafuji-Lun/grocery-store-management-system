@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const AddProduct = ({ onProductAdded }) => {
+const UpdateProduct = ({ product, onCancel, onProductUpdated }) => {
   const [formData, setFormData] = useState({
     name: "",
     uom_id: "",
@@ -11,6 +11,13 @@ const AddProduct = ({ onProductAdded }) => {
   const [uoms, setUOMs] = useState([]);
 
   useEffect(() => {
+    if (product) {
+      setFormData({
+        name: product.name,
+        uom_id: product.uom_id,
+        price_per_unit: product.price_per_unit,
+      });
+    }
     const backendURL = process.env.REACT_APP_BACKEND_URL;
     axios
       .get(`${backendURL}/getUoM`)
@@ -20,39 +27,24 @@ const AddProduct = ({ onProductAdded }) => {
       .catch( error => {
         console.error("Error fetching UOMs:", error);
       });
-  }, []);
+  }, [product]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
+    setFormData( prevData => ({ ...prevData, [name]: value }));
   };
 
-  const handleAdd = () => {
+  const handleSave = () => {
     const backendURL = process.env.REACT_APP_BACKEND_URL;
     axios
-      .post(`${backendURL}/addProduct`, formData)
+      .put(`${backendURL}/updateProduct/${product.product_id}`, formData)
       .then( response => {
-        // Notify the parent component that a new product has been added
-        onProductAdded(response.data);
-        setFormData({
-          name: "",
-          uom_id: "",
-          price_per_unit: "",
-        });
+        // Notify the parent component that the product has been updated
+        onProductUpdated(response.data); 
       })
       .catch( error => {
-        console.error("Error adding product:", error);
+        console.error("Error updating product:", error);
       });
-  };
-
-  const onCancel = () => {
-    // Hide the form and reset the form data when the "Cancel" button is clicked
-    setFormData({
-      name: "",
-      uom_id: "",
-      price_per_unit: "",
-    });
-    onProductAdded(undefined); // Send undefined to hide the form in the parent component
   };
 
   return (
@@ -104,7 +96,7 @@ const AddProduct = ({ onProductAdded }) => {
           />
         </div>
         <div className="flex justify-end">
-        <button
+          <button
             type="button"
             onClick={ onCancel }
             className="bg-gray-200 px-4 py-2 mr-2 rounded-md hover:bg-gray-300 focus:outline-none"
@@ -113,10 +105,10 @@ const AddProduct = ({ onProductAdded }) => {
           </button>
           <button
             type="button"
-            onClick={ handleAdd }
+            onClick={ handleSave }
             className="bg-[#204e93] text-white px-4 py-2 rounded-md hover:bg-[#005ea3] focus:outline-none"
           >
-            Add
+            Save
           </button>
         </div>
       </form>
@@ -124,4 +116,4 @@ const AddProduct = ({ onProductAdded }) => {
   )
 }
 
-export default AddProduct
+export default UpdateProduct

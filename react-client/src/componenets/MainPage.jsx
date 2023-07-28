@@ -10,7 +10,7 @@ const MainPage = () => {
       response => {
         setData(response.data)
       }
-    ).catch(error => {
+    ).catch( error => {
       console.error("Error fetching data:", error);
     });
   }, []);
@@ -23,7 +23,7 @@ const MainPage = () => {
           Orders
         </div>
         <div>
-          <a href="/manageproducts" className="bg-[#204e93] text-gray-100 py-2 px-3 mx-2 transition hover: scale-115 ">Manage Products</a>
+          <a href="/showproducts" className="bg-[#204e93] text-gray-100 py-2 px-3 mx-2 transition hover: scale-115 ">Products</a>
           <a href="/neworder" className="bg-[#204e93] text-gray-100 py-2 px-3 mx-2 transition hover: scale-115 ">New Orders</a>
         </div>        
       </div>
