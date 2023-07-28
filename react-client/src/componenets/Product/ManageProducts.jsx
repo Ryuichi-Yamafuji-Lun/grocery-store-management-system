@@ -164,7 +164,7 @@ const ManageProducts = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ManageProducts;
+export default ManageProducts
