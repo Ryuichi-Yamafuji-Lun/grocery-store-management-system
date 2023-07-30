@@ -3,13 +3,13 @@ import axios from "axios";
 
 const ShowProducts = () => {
   
-  const [products, setProducts] = useState([{}])
+  const [products, setProducts] = useState([{}]);
   
   useEffect(() => {
     const backendURL = process.env.REACT_APP_BACKEND_URL;
     axios.get(`${backendURL}/getProducts`).then(
       response => {
-        setProducts(response.data)
+        setProducts(response.data);
       }
     ).catch( error => {
       console.error("Error fetching data:", error);

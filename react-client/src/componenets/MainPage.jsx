@@ -2,13 +2,20 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const MainPage = () => {
-  const [data, setData] = useState([{}])
+  const [order, setData] = useState([{}]);
+  const [orderTotals, setOrderTotals] = useState({});
   
   useEffect(() => {
     const backendURL = process.env.REACT_APP_BACKEND_URL;
     axios.get(`${backendURL}/getAllOrders`).then(
       response => {
-        setData(response.data)
+        setData(response.data);
+        //Getting order total
+        const totals = {};
+        response.data.forEach((order) => {
+          totals[order.order_id] = order.total;
+        });
+        setOrderTotals(totals);
       }
     ).catch( error => {
       console.error("Error fetching data:", error);
@@ -38,12 +45,12 @@ const MainPage = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map( data => (
-              <tr key = { data.order_id }>
-                <td className="py-2 px-4 text-center">{data.date}</td>
-                <td className="py-2 px-4 text-center">{data.order_id}</td>
-                <td className="py-2 px-4 text-center">{data.customer_name}</td>
-                <td className="py-2 px-4 text-center"></td>
+            {order.map( order => (
+              <tr key = { order.order_id }>
+                <td className="py-2 px-4 text-center">{order.date}</td>
+                <td className="py-2 px-4 text-center">{order.order_id}</td>
+                <td className="py-2 px-4 text-center">{order.customer_name}</td>
+                <td className="py-2 px-4 text-center">{orderTotals[order.order_id]}</td>
               </tr>
             ))}
           </tbody>
