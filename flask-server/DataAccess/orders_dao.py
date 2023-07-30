@@ -7,6 +7,18 @@ DATE_FORMAT = '%m-%d-%Y'
 def format_date(date):
     return date.strftime(DATE_FORMAT)
 
+def calculate_order_total(order_id, connection):
+    with connection.cursor() as cursor:
+        query = "SELECT SUM(quantity * price_per_unit) AS total FROM order_detail " \
+                "LEFT JOIN products ON order_detail.product_id = products.product_id " \
+                "WHERE order_detail.order_id = %s"
+        data = (order_id,)
+        cursor.execute(query, data)
+        result = cursor.fetchone()
+        if result and result[0]:
+            return float(result[0])
+        return 0.0
+    
 def get_all_orders(connection):
     try:
         with connection.cursor() as cursor:
@@ -14,12 +26,13 @@ def get_all_orders(connection):
             cursor.execute(query)
 
             response = []
-            for (order_id, customer_name, total, date) in cursor:
+            for (order_id, customer_name, date) in cursor:
+                total = calculate_order_total(order_id, connection)
                 response.append({
                     'order_id': order_id,
                     'customer_name': customer_name,
-                    'total': total,
                     'date': format_date(date),
+                    'total': total,
                     'order_details': get_order_details(connection, order_id),
                 })
             
@@ -31,7 +44,7 @@ def get_all_orders(connection):
 def get_order_details(connection, order_id):
     try:
         with connection.cursor() as cursor:
-            query = "SELECT order_detail.order_id, order_detail.quantity, order_detail.total_price, " \
+            query = "SELECT order_detail.order_id, order_detail.quantity, " \
                     "products.name, products.price_per_unit FROM order_detail " \
                     "LEFT JOIN products ON order_detail.product_id = products.product_id " \
                     "WHERE order_detail.order_id = %s"
@@ -40,11 +53,10 @@ def get_order_details(connection, order_id):
             cursor.execute(query, data)
 
             records = []
-            for (order_id, quantity, total_price, product_name, price_per_unit) in cursor:
+            for (order_id, quantity, product_name, price_per_unit) in cursor:
                 records.append({
                     'order_id': order_id,
                     'quantity': quantity,
-                    'total_price': total_price,
                     'product_name': product_name,
                     'price_per_unit': price_per_unit
                 })
@@ -69,7 +81,7 @@ def insert_order(connection, order):
             order_id = cursor.lastrowid
 
             # Prepare the order details data to be inserted into the 'order_detail' table
-            order_details_query = "INSERT INTO order_detail (order_id, product_id, quantity, total_price) VALUES (%s, %s, %s, %s)"
+            order_details_query = "INSERT INTO order_detail (order_id, product_id, quantity) VALUES (%s, %s, %s)"
             order_details_data = []
 
             for order_detail_record in order['order_details']:
@@ -77,7 +89,6 @@ def insert_order(connection, order):
                     order_id,
                     int(order_detail_record['product_id']),
                     float(order_detail_record['quantity']),
-                    float(order_detail_record['total_price'])
                 ])
 
             # Insert multiple order details records using executemany

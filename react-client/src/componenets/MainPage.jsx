@@ -43,7 +43,7 @@ const MainPage = () => {
                 <td className="py-2 px-4 text-center">{data.date}</td>
                 <td className="py-2 px-4 text-center">{data.order_id}</td>
                 <td className="py-2 px-4 text-center">{data.customer_name}</td>
-                <td className="py-2 px-4 text-center">{data.total}</td>
+                <td className="py-2 px-4 text-center"></td>
               </tr>
             ))}
           </tbody>
