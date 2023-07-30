@@ -33,25 +33,7 @@ const NewOrder = () => {
             </tr>
           </thead>
           <tbody>
-            {orders.map( order => (
-                // Necessary React Fragment to access array in order_detail
-                <React.Fragment key={order.order_id}>
-                {order.order_details &&
-                  order.order_details.map( orderDetail => (
-                    <tr key={orderDetail.order_id}>
-                      <td className="py-2 px-4 text-center">{orderDetail.product_name}</td>
-                      <td className="py-2 px-4 text-center">{orderDetail.price_per_unit}</td>
-                      <td className="py-2 px-4 text-center">{orderDetail.quantity}</td>
-                      <td className="py-2 px-4 text-center">{orderDetail.total_price}</td>
-                    </tr>
-                  ))}
-                {!order.order_details && (
-                  <tr>
-                    <td colSpan="4" className="text-center">No order details available.</td>
-                  </tr>
-                )}
-              </React.Fragment>
-            ))}
+
           </tbody>
         </table>
       </div>
