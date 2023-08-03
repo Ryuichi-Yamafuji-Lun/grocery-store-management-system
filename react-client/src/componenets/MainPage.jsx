@@ -2,14 +2,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const MainPage = () => {
-  const [order, setData] = useState([{}]);
+  const [order, setOrder] = useState([{}]);
   const [orderTotals, setOrderTotals] = useState({});
   
   useEffect(() => {
     const backendURL = process.env.REACT_APP_BACKEND_URL;
     axios.get(`${backendURL}/getAllOrders`).then(
       response => {
-        setData(response.data);
+        setOrder(response.data);
         //Getting order total
         const totals = {};
         response.data.forEach((order) => {
