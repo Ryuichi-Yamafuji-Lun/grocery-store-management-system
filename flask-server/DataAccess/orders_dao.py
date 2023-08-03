@@ -68,13 +68,14 @@ def get_order_details(connection, order_id):
 
 def insert_order(connection, order):
     try:
+        print('Sent Order: ', order)
         with connection.cursor() as cursor:
             # Start a transaction
             connection.start_transaction()
 
             # Insert the order information into the 'orders' table
-            order_query = "INSERT INTO orders (customer_name, total, date) VALUES (%s, %s, %s)"
-            order_data = (order['customer_name'], order['grand_total'], datetime.now().date())
+            order_query = "INSERT INTO orders (customer_name, date) VALUES (%s, %s)"
+            order_data = (order['customer_name'], datetime.now().strftime('%Y-%m-%d'))
             cursor.execute(order_query, order_data)
 
             # Get the auto-generated order ID from the last insert
@@ -85,10 +86,12 @@ def insert_order(connection, order):
             order_details_data = []
 
             for order_detail_record in order['order_details']:
+                product_id = int(order_detail_record['product_id'])
+                quantity = int(order_detail_record['quantity'])
                 order_details_data.append([
                     order_id,
-                    int(order_detail_record['product_id']),
-                    float(order_detail_record['quantity']),
+                    product_id,
+                    quantity,
                 ])
 
             # Insert multiple order details records using executemany
@@ -103,4 +106,4 @@ def insert_order(connection, order):
     except mysql.connector.Error as e:
         # Rollback the transaction in case of an error
         connection.rollback()
-        raise Exception("Error executing MySQL INSERT ORDER query:", e)  
+        raise Exception("Error executing MySQL INSERT ORDER query:", e)
