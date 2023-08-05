@@ -68,21 +68,18 @@ def get_order_details(connection, order_id):
 
 def insert_order(connection, order):
     try:
-        print('Sent Order: ', order)
         with connection.cursor() as cursor:
-            # Start a transaction
-            connection.start_transaction()
-
             # Insert the order information into the 'orders' table
-            order_query = "INSERT INTO orders (customer_name, date) VALUES (%s, %s)"
+            order_query = "INSERT INTO grocerystore.orders (customer_name, date) VALUES (%s, %s)"
             order_data = (order['customer_name'], datetime.now().strftime('%Y-%m-%d'))
             cursor.execute(order_query, order_data)
+            connection.commit()
 
             # Get the auto-generated order ID from the last insert
             order_id = cursor.lastrowid
 
             # Prepare the order details data to be inserted into the 'order_detail' table
-            order_details_query = "INSERT INTO order_detail (order_id, product_id, quantity) VALUES (%s, %s, %s)"
+            order_details_query = "INSERT INTO grocerystore.order_detail (order_id, product_id, quantity) VALUES (%s, %s, %s)"
             order_details_data = []
 
             for order_detail_record in order['order_details']:

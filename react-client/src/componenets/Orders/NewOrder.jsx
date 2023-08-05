@@ -13,13 +13,13 @@ const NewOrder = () => {
       (response) => {
         setProducts(response.data);
       }
-    ).catch((error) => {
+    ).catch( error => {
       console.error("Error fetching products:", error);
     });
   }, []);
 
   const handleProductSelect = (index, productId) => {
-    const selectedProduct = products.find((product) => product.product_id === parseInt(productId));
+    const selectedProduct = products.find( product => product.product_id === parseInt(productId));
     if (selectedProduct) {
       const updatedSelectedProducts = [...selectedProducts];
       updatedSelectedProducts[index] = {
@@ -45,29 +45,28 @@ const NewOrder = () => {
   };
 
   const handleOrderSubmit = () => {
-  
     if (customerName && selectedProducts.length > 0) {
-      const orders = selectedProducts.map((product) => ({
+      const order = {
         customer_name: customerName,
-        order_details: [
-          {
-            product_id: product.product_id,
-            product_name: product.product_name,
-            quantity: product.quantity,
-          },
-        ],
-      }));
-  
-      console.log('Submitting orders:', orders); // Add this line to check the orders data
+        order_details: selectedProducts.map( product => ({
+          product_id: product.product_id,
+          product_name: product.product_name,
+          quantity: product.quantity,
+        })),
+      };
   
       const backendURL = process.env.REACT_APP_BACKEND_URL;
       axios
-        .post(`${backendURL}/insertOrder`, { orders })
-        .then((response) => {
-          console.log('Order submitted successfully:', response);
+        .post(`${backendURL}/insertOrder`, order)
+        .then( response => {
+          console.log("Response from backend:", response.data);
+          window.location.href = "/mainpage";
         })
-        .catch((error) => {
-          console.error('Error submitting order:', error);
+        .catch( error => {
+          if (error.response && error.response.data) {
+            console.log("Error response data:", error.response.data);
+          }
+          console.error("Error submitting order:", error);
         });
     }
   };
@@ -75,7 +74,7 @@ const NewOrder = () => {
   useEffect(() => {
     // Calculate the total cost for each product whenever the selected products or their quantities change
     const newOrderTotals = {};
-    selectedProducts.forEach((product) => {
+    selectedProducts.forEach( product => {
       newOrderTotals[product.product_id] = product.price_per_unit * product.quantity;
     });
     setOrderTotals(newOrderTotals);
@@ -152,7 +151,7 @@ const NewOrder = () => {
         </button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default NewOrder;
+export default NewOrder
