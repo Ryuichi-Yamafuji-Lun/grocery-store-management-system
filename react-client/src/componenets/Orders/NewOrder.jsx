@@ -45,7 +45,12 @@ const NewOrder = () => {
   };
 
   const handleOrderSubmit = () => {
-    if (customerName && selectedProducts.length > 0) {
+      if (customerName && selectedProducts.length > 0) {
+        const hasValidQuantity = selectedProducts.some((product) => product.quantity > 0);
+      if (!hasValidQuantity) {
+        alert("Please select at least one product with a quantity greater than zero.");
+        return;
+      }
       const order = {
         customer_name: customerName,
         order_details: selectedProducts.map( product => ({

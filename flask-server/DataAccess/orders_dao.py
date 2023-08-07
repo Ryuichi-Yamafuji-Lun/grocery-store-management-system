@@ -25,8 +25,11 @@ def get_all_orders(connection):
             query = "SELECT * FROM orders"
             cursor.execute(query)
 
+            # Necessary so there is no error 
+            rows = cursor.fetchall()
+
             response = []
-            for (order_id, customer_name, date) in cursor:
+            for (order_id, customer_name, date) in rows:
                 total = calculate_order_total(order_id, connection)
                 response.append({
                     'order_id': order_id,
