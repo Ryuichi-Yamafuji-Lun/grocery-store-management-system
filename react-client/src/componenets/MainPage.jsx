@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 import axios from "axios";
 
 const MainPage = () => {
@@ -46,11 +47,15 @@ const MainPage = () => {
               </tr>
             </thead>
             <tbody>
-              {orders.map((order) => (
-                <tr key={order.order_id}>
+              {orders.map( order => (
+                <tr key={ order.order_id }>
                   <td className="py-2 px-4 text-center">{order.date}</td>
                   <td className="py-2 px-4 text-center">{order.order_id}</td>
-                  <td className="py-2 px-4 text-center">{order.customer_name}</td>
+                  <td className="py-2 px-4 text-center">
+                    <Link to={`/customerOrder/${order.order_id}`}>
+                      {order.customer_name}
+                    </Link>
+                  </td>
                   <td className="py-2 px-4 text-center">{orderTotals[order.order_id]}</td>
                 </tr>
               ))}
