@@ -45,6 +45,11 @@ def insert_new_product(connection, product):
 def delete_product(connection, product_id):
     try:
         with connection.cursor() as cursor:
+            # Delete associated order details first
+            delete_order_details_query = "DELETE FROM grocerystore.order_detail WHERE product_id = %s"
+            data = (product_id,)
+            cursor.execute(delete_order_details_query, data)
+
             # SQL query to delete a product from the 'products' table
             query = ("DELETE FROM grocerystore.products WHERE product_id = %s")
             data = (product_id,)

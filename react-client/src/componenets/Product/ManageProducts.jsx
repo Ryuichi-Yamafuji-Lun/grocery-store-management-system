@@ -72,6 +72,7 @@ const ManageProducts = () => {
     axios
       .delete(`${backendURL}/deleteProduct/${product.product_id}`)
       .then( response => {
+        console.log('Product successfully deleted', response);
         setProducts( prevProducts =>
           prevProducts.filter((item) => item.product_id !== product.product_id)
         );
