@@ -128,3 +128,21 @@ def insert_order(connection, order):
         # Rollback the transaction in case of an error
         connection.rollback()
         raise Exception("Error executing MySQL INSERT ORDER query:", e)
+    
+def delete_order(connection, order_id):
+    try:
+        with connection.cursor() as cursor:
+            # Delete associated order details first
+            delete_order_details_query = "DELETE FROM grocerystore.order_detail WHERE order_id = %s"
+            data = (order_id,)
+            cursor.execute(delete_order_details_query, data)
+
+            # SQL query to delete an order from the 'orders' table
+            query = ("DELETE FROM grocerystore.orders WHERE order_id = %s")
+            data = (order_id,)
+            cursor.execute(query, data)
+
+            connection.commit()
+
+    except mysql.connector.Error as e:
+        raise Exception("Error executing MySQL DELETE ORDER query:", e)

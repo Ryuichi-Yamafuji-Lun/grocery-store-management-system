@@ -138,6 +138,16 @@ def insert_order(connection):
         response = make_response(jsonify(error_response), 500)
 
         return response
+    
+@app.route('/deleteOrder/<int:order_id>', methods=['DELETE'])
+@handle_db_connection
+def delete_order(connection, order_id):
+    try:
+        orders_dao.delete_order(connection, order_id)
+        return jsonify({"message": "Order deleted successfully"}), 200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 # UNIT OF MEASUREMENTS
 @app.route('/getUoM', methods=['GET'])
