@@ -18,6 +18,27 @@ def calculate_order_total(order_id, connection):
         if result and result[0]:
             return float(result[0])
         return 0.0
+
+def get_order_by_id(connection, order_id):
+    try:
+        with connection.cursor() as cursor:
+            query = "SELECT order_id, customer_name, date FROM orders WHERE order_id = %s"
+            data = (order_id,)
+            cursor.execute(query, data)
+            result = cursor.fetchone()
+            if result:
+                order = {
+                    'order_id': result[0],
+                    'customer_name': result[1],
+                    'date': format_date(result[2]),
+                    'total': calculate_order_total(order_id, connection),
+                    'order_details': get_order_details(connection, order_id),
+                }
+                return order
+            else:
+                return {"error": "Order not found"}
+    except mysql.connector.Error as e:
+        raise Exception("Error executing MySQL GET ORDER BY ID query:", e)
     
 def get_all_orders(connection):
     try:

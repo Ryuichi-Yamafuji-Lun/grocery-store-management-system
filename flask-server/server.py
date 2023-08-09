@@ -93,6 +93,29 @@ def get_all_orders(connection):
     
     return jsonify(orders)
 
+@app.route('/getOrderDetails/<int:order_id>', methods=['GET'])
+@handle_db_connection
+def get_order_details(connection, order_id):
+    try:
+        order_details = orders_dao.get_order_details(connection, order_id)
+
+        if "error" in order_details:
+            return jsonify(order_details), 500
+
+        order = orders_dao.get_order_by_id(connection, order_id)
+        if "error" in order:
+            return jsonify(order), 500
+
+        response_data = {
+            "order": order,
+            "order_details": order_details
+        }
+
+        return jsonify(response_data)
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 @app.route('/insertOrder', methods=['POST'])
 @handle_db_connection
 def insert_order(connection):

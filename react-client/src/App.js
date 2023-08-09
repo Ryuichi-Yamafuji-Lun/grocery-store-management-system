@@ -25,7 +25,7 @@ function App() {
         <Route path='/manageproducts' element={<ManageProducts />} />
         <Route path='/addproduct' element={<AddProduct />} />
         <Route path='/neworder' element={<NewOrder />} />
-        <Route path='/customerorder/ :orderId' element={<CustomerOrder />} />
+        <Route path='/customerorder/:orderId' element={<CustomerOrder />} />
         <Route path='/about' element={<About />} />
       </Routes>     
     </div>
