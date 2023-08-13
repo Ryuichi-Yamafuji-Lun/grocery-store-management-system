@@ -1,4 +1,3 @@
-import AuthenticationButton from "./Login/AuthnticationButton";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useState } from "react";
 
@@ -16,9 +15,6 @@ const NavBar = () => {
         <li>
           <a href="/mainpage">Home</a>
         </li>
-        <li>
-          <AuthenticationButton />
-        </li>
       </ul>
 
       {/* Hamburger */}
@@ -31,9 +27,6 @@ const NavBar = () => {
       <ul className={!nav ? 'hidden' : "absolute top-0 left-0 w-full h-screen bg-[#204e93] flex flex-col justify-center items-center"}>
         <li className="py-6 test-4xl">
           <a href="/mainpage">Home</a>
-        </li>
-        <li className="py-6 test-4xl">
-          <AuthenticationButton />
         </li>
         <li className="py-6 test-4xl">
           <a href="/about">About</a>
