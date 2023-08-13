@@ -14,7 +14,7 @@ const MainPage = () => {
         setOrders(response.data);
         //Getting order total
         const totals = {};
-        response.data.forEach((order) => {
+        response.data.forEach( order => {
           totals[order.order_id] = order.total;
         });
         setOrderTotals(totals);
@@ -28,12 +28,12 @@ const MainPage = () => {
     const backendURL = process.env.REACT_APP_BACKEND_URL;
     axios
       .delete(`${backendURL}/deleteOrder/${order_id}`)
-      .then((response) => {
+      .then( response => {
         console.log("Order deleted successfully", response);
         // Refresh the order list after successful deletion
         axios
           .get(`${backendURL}/getAllOrders`)
-          .then((response) => {
+          .then( response => {
             setOrders(response.data);
             const totals = {};
             response.data.forEach((order) => {
@@ -41,11 +41,11 @@ const MainPage = () => {
             });
             setOrderTotals(totals);
           })
-          .catch((error) => {
+          .catch( error => {
             console.error("Error fetching data:", error);
           });
       })
-      .catch((error) => {
+      .catch( error => {
         console.error("Error deleting order:", error);
       });
   };
