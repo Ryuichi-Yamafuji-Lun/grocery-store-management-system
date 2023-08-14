@@ -1,4 +1,4 @@
-import pikachu from '../assets/my-pokemon-sprites/sprites/pokemon/generation-v/black-white/animated/25.gif'
+import pikachu from '../assets/pokemon-sprites/pokemon/pikachu.gif'
 
 const WelcomePage = () => {
 
