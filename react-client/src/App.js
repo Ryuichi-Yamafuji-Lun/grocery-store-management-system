@@ -10,8 +10,6 @@ import NewOrder from "./componenets/Orders/NewOrder";
 import About from "./componenets/About";
 import ShowProducts from "./componenets/Product/ShowProducts";
 
-
-
 function App() {
 
   return (
