@@ -4,14 +4,31 @@
 
 @import "tailwindcss/utilities";
 
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&display=swap');
-
-@layer base {
-    body {
-        @apply font-[Raleway];
-    }
-    li {
-        @apply px-4;
-        @apply cursor-pointer
-    }
+/* Load and apply the Pokemon Solid font */
+@font-face {
+    font-family: 'Pokemon Solid';
+    src: url('./assets/fonts/Pokemon Classic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
+
+/* Apply styles to the body */
+body {
+    background-color: #f2f2f2;
+    font-family: 'Pokemon Solid', sans-serif; 
+  }
+  
+  /* Apply styles to the WelcomePage component */
+  .welcome-page {
+    background: url('./assets/pokemon-sprites/Background/pokemart-background.jpg') center/cover no-repeat;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-family: 'Pokemon Solid', sans-serif; /* Use Pokemon Solid font */
+  }
+  
