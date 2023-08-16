@@ -9,11 +9,13 @@ import CustomerOrder from "./componenets/Orders/CustomerOrder";
 import NewOrder from "./componenets/Orders/NewOrder";
 import About from "./componenets/About";
 import ShowProducts from "./componenets/Product/ShowProducts";
+import AudioPlayer from './componenets/AudioPlayer';
 
 function App() {
 
   return (
     <div>
+      <AudioPlayer /> 
       <NavBar />
       <Routes>
         <Route path='/' element={<WelcomePage />} />
@@ -24,7 +26,8 @@ function App() {
         <Route path='/neworder' element={<NewOrder />} />
         <Route path='/customerorder/:orderId' element={<CustomerOrder />} />
         <Route path='/about' element={<About />} />
-      </Routes>     
+      </Routes>    
+      
     </div>
   )
 }
