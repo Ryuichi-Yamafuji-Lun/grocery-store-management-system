@@ -31,3 +31,13 @@ body {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   }
   
+  /* Apply style to About component */
+  .project-box {
+    background-color: rgba(255, 255, 255, 0.15); /* Adjust the color and opacity as needed */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 800px;
+    backdrop-filter: blur(10px); /* Apply the glass effect */
+  }
