@@ -51,14 +51,14 @@ const MainPage = () => {
   };
 
   return (
-    <div name='main' className="w-full h-screen">
+    <div name='main' className="w-full h-screen bg-pokemart-pattern">
       <div className="mx-auto flex flex-row justify-between items-center p-4">
-        <div className="text-4xl">
-          Orders
+        <div className="text-4xl text-white">
+          Welcome to PokéMart
         </div>
         <div>
-          <a href="/showproducts" className="bg-[#204e93] text-gray-100 py-2 px-3 mx-2 transition hover: scale-115 ">Products</a>
-          <a href="/neworder" className="bg-[#204e93] text-gray-100 py-2 px-3 mx-2 transition hover: scale-115 ">New Orders</a>
+          <Link to="/showproducts" className="bg-[#204e93] text-gray-100 py-2 px-3 mx-2 transition hover: scale-115">Products</Link>
+          <Link to="/neworder" className="bg-[#204e93] text-gray-100 py-2 px-3 mx-2 transition hover: scale-115">New Orders</Link>
         </div>        
       </div>
       {orders.length > 0 ? (

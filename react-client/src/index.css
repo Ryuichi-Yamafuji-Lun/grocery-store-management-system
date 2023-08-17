@@ -14,7 +14,7 @@
 
 /* Apply styles to the body */
 body {
-    background-color: #f2f2f2;
+    background: url('./assets/pokemon-sprites/Background/pokemart-background.jpg') center/cover no-repeat;
     font-family: 'Pokemon Solid', sans-serif; 
   }
   
@@ -29,6 +29,5 @@ body {
     text-align: center;
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    font-family: 'Pokemon Solid', sans-serif; /* Use Pokemon Solid font */
   }
   

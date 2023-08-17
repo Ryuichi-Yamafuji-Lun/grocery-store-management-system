@@ -22,7 +22,7 @@ const CustomerOrder = () => {
 
   return (
     <div className="w-full h-screen">
-      <div className="mx-auto p-4">
+      <div className="mx-auto p-4 text-white">
         <h1 className="text-4xl">Order Details</h1>
         <p>Order ID: { order.order_id }</p>
         <p>Customer: { order.customer_name }</p>
@@ -55,7 +55,7 @@ const CustomerOrder = () => {
         </table>
       </div>
       <div className="mx-auto flex flex-row justify-between items-center p-4">
-        <Link to="/mainpage" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+        <Link to="/mainpage" className="bg-[#204e93] text-gray-100 py-2 px-3 mx-2 transition hover:scale-115">
           Return
         </Link>
       </div>

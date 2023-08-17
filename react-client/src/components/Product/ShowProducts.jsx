@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Potion from "../../assets/pokemon-sprites/Items/medicine/potion.png";
 
 const ShowProducts = () => {
   
@@ -19,8 +20,15 @@ const ShowProducts = () => {
   return (
 <div name='main' className="w-full h-screen">
       <div className="mx-auto flex flex-row justify-between items-center p-4">
-        <div className="text-4xl">
-          Products Available
+        <div className="flex items-center">
+            <h1 className="text-4xl text-white mr-4 inline-block whitespace-nowrap ">
+              Products Available
+            </h1>
+            <img
+              src={Potion}
+              alt="Potion"
+              className={`w-12 md:w-20 mb-2 inline-block align-middle `}
+            />
         </div>
         <div>
           <a href="/manageproducts" className="bg-[#204e93] text-gray-100 py-2 px-3 mx-2 transition hover: scale-115 ">Manage Products</a>

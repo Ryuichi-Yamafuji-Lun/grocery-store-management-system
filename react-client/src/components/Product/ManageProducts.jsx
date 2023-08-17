@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import UpdateProduct from "./UpdateProduct";
 import AddProduct from "./AddProduct";
+import PokeBall from "../../assets/pokemon-sprites/Items/ball/poke.png";
+import PokeBallSound from "../../assets/audio/catch.mp3"
 
 const ManageProducts = () => {
   const [products, setProducts] = useState([]);
@@ -82,11 +84,32 @@ const ManageProducts = () => {
       });
   };
 
+  const [isAudioPlayed, setIsAudioPlayed] = useState(false);
+  
+  const playAudio = () => {
+    if (!isAudioPlayed) {
+      const audio = new Audio(PokeBallSound);
+      audio.play();
+      setIsAudioPlayed(true);
+    }
+  };
+
   return (
     <div>
       <div name="main" className="w-full h-screen">
         <div className="mx-auto flex flex-row justify-between items-center p-4">
-          <div className="text-4xl">Manage Products</div>
+          <div className="flex items-center">
+            <h1 className="text-4xl text-white mr-4 inline-block whitespace-nowrap ">
+              Manage Products
+            </h1>
+            <img
+              src={PokeBall}
+              alt="Pokeball"
+              className={`w-12 md:w-20 mb-2 inline-block align-middle `}
+              onClick={playAudio}
+            />
+          </div>
+          
           <a href="/showproducts" className="bg-[#204e93] text-gray-100 py-2 px-3 mx-2 transition hover: scale-115 ">Return</a>
         </div>
       {!editMode && !selectedProduct && !showAddForm && (
