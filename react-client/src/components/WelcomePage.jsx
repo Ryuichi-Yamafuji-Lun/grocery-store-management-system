@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Pikachu from '../assets/pokemon-sprites/Pokemon/pikachu.gif';
 import Music from '../assets/audio/pokestore.mp3';
 
@@ -29,6 +30,9 @@ const WelcomePage = () => {
         </div>
         <p className="text-2xl py-2 max-w-[700px] text-white">PokéStore Management System</p>
         <p className="text-white">Made with React, mySQL, and Flask</p>
+      </div>
+      <div className="py-8">
+        <Link to="/mainpage" className="bg-[#204e93] text-gray-100 py-2 px-3 mx-2 transition hover: scale-115">Start</Link>
       </div>
     </div>
   )
