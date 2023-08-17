@@ -1,12 +1,12 @@
 import mysql.connector
-
+import os
 def get_mysql_connection():
     try:
         connection = mysql.connector.connect(
-            user='root',
-            password='root',
-            host='127.0.0.1',
-            database='grocerystore'
+            user= os.environ['DB_USER'],
+            password= os.environ['DB_PASSWORD'],
+            host= os.environ['DB_HOST'],
+            database= os.environ['DB_NAME'],
         )
         return connection
     except mysql.connector.Error as e:
