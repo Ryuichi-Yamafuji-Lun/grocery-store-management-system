@@ -88,83 +88,97 @@ const NewOrder = () => {
 
   return (
     <div name='main' className="w-full min-h-screen flex flex-col items-center">
-      <div className="mx-auto flex flex-row justify-between items-center p-4">
+      <div className="mx-auto flex flex-col md:flex-row justify-between items-center p-2 md:p-4">
         <div className="flex items-center">
-            <h1 className="text-4xl text-white mr-4 inline-block whitespace-nowrap ">
-              New Order
-            </h1>
-            <img
-              src={PokeBall}
-              alt="Pokeball"
-              className={`w-12 md:w-20 mb-2 inline-block align-middle `}
-            />
+          <h1 className="text-2xl md:text-4xl text-white mr-2 md:mr-4 inline-block whitespace-nowrap">
+            New Order
+          </h1>
+          <img
+            src={PokeBall}
+            alt="Pokeball"
+            className="w-8 md:w-12 mb-2 inline-block align-middle"
+          />
         </div>
-        <div>
+        <div className="w-full md:w-auto">
           <input
-            className="shadow-lg bg-white w-full p-4"
+            className="shadow-lg bg-white w-full p-2 md:p-4"
             type="text"
-            placeholder="Customer Name"
+            placeholder="Name"
             value={customerName}
             onChange={(e) => setCustomerName(e.target.value)}
           />
         </div>
       </div>
-      <div className="mx-auto flex flex-row justify-center items-center p-4">
-        <table className="shadow-lg bg-white w-full">
-          <thead>
-            <tr className="bg-blue-100">
-              <th className="border text-center px-8 py-4">Product</th>
-              <th className="border text-center px-8 py-4">Price per unit</th>
-              <th className="border text-center px-8 py-4">Quantity</th>
-              <th className="border text-center px-8 py-4">Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            {selectedProducts.map((selectedProduct, index) => (
-              <tr key={index}>
-                <td className="py-2 px-4 text-center">
-                  <select
-                    value={selectedProduct.product_id || ""}
-                    onChange={(e) => handleProductSelect(index, e.target.value)}
-                  >
-                    <option value="" disabled>Select a product</option>
-                    {products.map((product) => (
-                      <option key={product.product_id} value={product.product_id}>
-                        {product.name}
-                      </option>
-                    ))}
-                  </select>
-                </td>
-                <td className="py-2 px-4 text-center">
-                  {selectedProduct.price_per_unit || 0}
-                </td>
-                <td className="py-2 px-4 text-center">
-                  <input
-                    type="number"
-                    min={0}
-                    value={selectedProduct.quantity || ""}
-                    onChange={(e) => handleQuantityChange(index, e.target.value)}
-                    onBlur={(e) => handleQuantityChange(index, e.target.value)}
-                  />
-                </td>
-                <td className="py-2 px-4 text-center">
-                  {orderTotals[selectedProduct.product_id] || 0}
-                </td>
+      <div className="mx-auto p-2 md:p-4 overflow-x-auto max-w-screen-md">
+        <div className="table-container w-full">
+          <table className="shadow-lg bg-white w-full table-fixed">
+            <thead>
+              <tr className="bg-blue-100">
+                <th className="border text-center py-1 md:py-2 w-1/4 md:w-auto">Product</th>
+                <th className="border text-center py-1 md:py-2 w-1/4 md:w-auto">Price per unit</th>
+                <th className="border text-center py-1 md:py-2 w-1/4 md:w-auto">Quantity</th>
+                <th className="border text-center py-1 md:py-2 w-1/4 md:w-auto">Total</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {selectedProducts.map((selectedProduct, index) => (
+                <tr key={index}>
+                  <td className="border text-center py-1 md:py-2 w-1/4 md:w-auto">
+                    <div className="w-full">
+                      <select
+                        value={selectedProduct.product_id || ""}
+                        onChange={(e) => handleProductSelect(index, e.target.value)}
+                        className="w-full"
+                      >
+                        <option value="" disabled>Select</option>
+                        {products.map((product) => (
+                          <option key={product.product_id} value={product.product_id}>
+                            {product.name}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </td>
+                  <td className="border text-center py-1 md:py-2 w-1/4 md:w-auto">
+                    {selectedProduct.price_per_unit || 0}
+                  </td>
+                  <td className="border text-center py-1 md:py-2 w-1/4 md:w-auto">
+                    <div className="w-full">
+                      <input
+                        type="number"
+                        min={0}
+                        value={selectedProduct.quantity || ""}
+                        onChange={(e) => handleQuantityChange(index, e.target.value)}
+                        onBlur={(e) => handleQuantityChange(index, e.target.value)}
+                        className="w-full"
+                      />
+                    </div>
+                  </td>
+                  <td className="border text-center py-1 md:py-2 w-1/4 md:w-auto">
+                    {orderTotals[selectedProduct.product_id] || 0}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
-      <div className="mx-auto flex flex-row justify-between items-center p-4">
-        <button onClick={handleAddRow} className="bg-[#204e93] text-gray-100 py-2 px-3 mx-2 transition hover:scale-115">
+      <div className="mx-auto flex flex-col md:flex-row justify-between items-center p-4">
+        <button
+          onClick={handleAddRow}
+          className="bg-[#204e93] text-gray-100 py-2 px-3 mb-2 md:mb-0 mx-2 transition hover:scale-105"
+        >
           Add Row
         </button>
-        <button onClick={handleOrderSubmit} className="bg-[#204e93] text-gray-100 py-2 px-3 mx-2 transition hover:scale-115">
+        <button
+          onClick={handleOrderSubmit}
+          className="bg-[#204e93] text-gray-100 py-2 px-3 mx-2 transition hover:scale-105"
+        >
           Submit Order
         </button>
       </div>
     </div>
-  )
+  )  
 }
 
 export default NewOrder
