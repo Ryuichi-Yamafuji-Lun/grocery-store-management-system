@@ -7,7 +7,7 @@ const NavBar = () => {
   const handleClick = () => setNav(!nav);
 
   return (
-    <div className="sticky top-0 z-50 w-full h-20 flex justify-between items-center px-4 bg-blue-800 text-white">
+    <div className="sticky top-0 z-50 w-full md:w-auto h-20 flex justify-between items-center px-4 bg-blue-800 text-white">
       <div className="flex items-center space-x-4">
         <Link to="/" className="flex items-center space-x-2">
           <img
