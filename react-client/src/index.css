@@ -14,14 +14,16 @@
 
 /* Apply styles to the body */
 body {
-    background: url('./assets/pokemon-sprites/Background/pokemart-background.jpg') center/cover no-repeat;
+    background: url('./assets/pokemon-sprites/Background/pokemart-background.jpg') center/cover no-repeat fixed;
     font-family: 'Pokemon Solid', sans-serif; 
+    margin: 0;
   }
   
   /* Apply styles to the WelcomePage component */
   .welcome-page {
-    background: url('./assets/pokemon-sprites/Background/pokemart-background.jpg') center/cover no-repeat;
-    height: 100vh;
+    background: url('./assets/pokemon-sprites/Background/pokemart-background.jpg') center/cover no-repeat fixed;
+    min-height: 100vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,15 +31,26 @@ body {
     text-align: center;
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    overflow-y: scroll;
+    /* Adjust styles for screens smaller than 768px */
+    @media (max-width: 768px) {
+      font-size: 18px;
+    }
   }
   
   /* Apply style to About component */
   .project-box {
-    background-color: rgba(255, 255, 255, 0.15); /* Adjust the color and opacity as needed */
+    background-color: rgba(255, 255, 255, 0.15); 
     padding: 20px;
     border-radius: 10px;
     text-align: center;
     margin: 0 auto;
     max-width: 800px;
-    backdrop-filter: blur(10px); /* Apply the glass effect */
+    overflow: auto;
+    /* Apply the glass effect */
+    backdrop-filter: blur(10px); 
+    /* Adjust styles for screens smaller than 768px */
+    @media (max-width: 768px) {
+      padding: 10px;
+    }
   }
