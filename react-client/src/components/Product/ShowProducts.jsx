@@ -19,7 +19,7 @@ const ShowProducts = () => {
   }, []);
 
   return (
-    <div name='main' className="w-full min-h-screen bg-pokemart-pattern flex flex-col items-center">
+    <div name='main' className="w-full min-h-screen flex flex-col items-center">
       <div className="w-full text-white p-4">
         <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 md:space-x-2">
           <div className="text-2xl md:text-4xl flex items-center">

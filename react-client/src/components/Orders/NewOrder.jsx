@@ -87,7 +87,7 @@ const NewOrder = () => {
   }, [selectedProducts]);
 
   return (
-    <div name='main' className="w-full h-screen">
+    <div name='main' className="w-full min-h-screen flex flex-col items-center">
       <div className="mx-auto flex flex-row justify-between items-center p-4">
         <div className="flex items-center">
             <h1 className="text-4xl text-white mr-4 inline-block whitespace-nowrap ">
