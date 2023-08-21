@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 import axios from "axios";
 import UpdateProduct from "./UpdateProduct";
 import AddProduct from "./AddProduct";
@@ -95,13 +96,11 @@ const ManageProducts = () => {
   };
 
   return (
-    <div>
-      <div name="main" className="w-full h-screen">
-        <div className="mx-auto flex flex-row justify-between items-center p-4">
-          <div className="flex items-center">
-            <h1 className="text-4xl text-white mr-4 inline-block whitespace-nowrap ">
-              Manage Products
-            </h1>
+    <div name="main" className="w-full min-h-screen bg-pokemart-pattern flex flex-col items-center">
+      <div className="w-full text-white p-4">
+        <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 md:space-x-2">
+          <div className="text-4xl">
+            Manage Products
             <img
               src={PokeBall}
               alt="Pokeball"
@@ -109,46 +108,54 @@ const ManageProducts = () => {
               onClick={playAudio}
             />
           </div>
-          
-          <a href="/showproducts" className="bg-[#204e93] text-gray-100 py-2 px-3 mx-2 transition hover: scale-115 ">Return</a>
-        </div>
-      {!editMode && !selectedProduct && !showAddForm && (
-          <div>
-            <button
-              onClick={() => {
-                setSelectedProduct(null);
-                setEditMode(false);
-                setShowAddForm(true);
-              }}
-              className="bg-[#204e93] text-gray-100 py-2 px-4 mx-4 transition hover: scale-115"
+          <div className="flex space-x-2">
+            <Link
+              to="/showproducts"
+              className="bg-[#204e93] text-gray-100 py-2 px-3 transition hover:scale-105"
             >
-              Add New Product
-            </button>
+              Return
+            </Link>
           </div>
-        )}
-        {(editMode || selectedProduct) ? (
-          <UpdateProduct
-            product={selectedProduct}
-            onCancel={() => {
+        </div>
+      </div>
+      {!editMode && !selectedProduct && !showAddForm && (
+        <div className="w-full text-center p-4">
+          <button
+            onClick={() => {
+              setSelectedProduct(null);
               setEditMode(false);
-              setSelectedProduct(null);
+              setShowAddForm(true);
             }}
-            onProductUpdated={handleProductUpdated}
-          />
-        ) : null}
-
-        {!editMode && !selectedProduct && showAddForm && (
-          <AddProduct 
-            onProductAdded={handleProductAdded} 
-            onCancel={() => {
-              setShowAddForm(false)
-              setSelectedProduct(null);
-            }}
-          />
-        )}
-
-        <div className="mx-auto flex flex-row justify-center items-center p-4">
-          <table className="shadow-lg bg-white w-full">
+            className="bg-[#204e93] text-gray-100 py-2 px-4 mx-auto transition hover:scale-105"
+          >
+            Add New Product
+          </button>
+        </div>
+      )}
+      {(editMode || selectedProduct) ? (
+        <UpdateProduct
+          product={selectedProduct}
+          onCancel={() => {
+            setEditMode(false);
+            setSelectedProduct(null);
+          }}
+          onProductUpdated={handleProductUpdated}
+        />
+      ) : null}
+  
+      {!editMode && !selectedProduct && showAddForm && (
+        <AddProduct
+          onProductAdded={handleProductAdded}
+          onCancel={() => {
+            setShowAddForm(false);
+            setSelectedProduct(null);
+          }}
+        />
+      )}
+  
+      <div className="mx-auto w-full max-w-screen-xl p-4">
+        <div className="overflow-x-auto">
+          <table className="shadow-lg bg-white min-w-full">
             <thead>
               <tr className="bg-blue-100">
                 <th className="border text-center px-8 py-4">Product ID</th>
@@ -159,12 +166,12 @@ const ManageProducts = () => {
               </tr>
             </thead>
             <tbody>
-              {products.map( product => (
-                <tr key={ product.product_id }>
+              {products.map(product => (
+                <tr key={product.product_id}>
                   <td className="py-2 px-4 text-center">{product.product_id}</td>
                   <td className="py-2 px-4 text-center">{product.name}</td>
                   <td className="py-2 px-4 text-center">
-                    {uoms.find( uom => uom.uom_id === product.uom_id)?.uom_name}
+                    {uoms.find(uom => uom.uom_id === product.uom_id)?.uom_name}
                   </td>
                   <td className="py-2 px-4 text-center">{product.price_per_unit}</td>
                   <td className="py-2 px-4 text-center">
@@ -188,7 +195,7 @@ const ManageProducts = () => {
         </div>
       </div>
     </div>
-  )
+  )  
 }
 
 export default ManageProducts

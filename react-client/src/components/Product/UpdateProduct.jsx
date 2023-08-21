@@ -48,7 +48,7 @@ const UpdateProduct = ({ product, onCancel, onProductUpdated }) => {
   };
 
   return (
-    <div className="mx-auto flex flex-col justify-center items-center p-4">
+    <div className="mx-auto w-full flex justify-center p-4">
       <form className="shadow-lg bg-white w-full p-4">
         <div className="flex flex-col mb-4">
           <label htmlFor="name" className="text-lg mb-2">

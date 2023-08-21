@@ -58,7 +58,7 @@ const AddProduct = ({ onProductAdded, onCancel }) => {
   };
 
   return (
-    <div className="mx-auto flex flex-col justify-center items-center p-4">
+    <div className="mx-auto w-full flex justify-center p-4">
       <form className="shadow-lg bg-white w-full p-4">
         <div className="flex flex-col mb-4">
           <label htmlFor="name" className="text-lg mb-2">
@@ -68,8 +68,8 @@ const AddProduct = ({ onProductAdded, onCancel }) => {
             type="text"
             name="name"
             id="name"
-            value={ formData.name }
-            onChange={ handleChange }
+            value={formData.name}
+            onChange={handleChange}
             className="px-4 py-2 border rounded-md focus:outline-none"
           />
         </div>
@@ -80,14 +80,14 @@ const AddProduct = ({ onProductAdded, onCancel }) => {
           <select
             name="uom_id"
             id="uom_id"
-            value={ formData.uom_id }
-            onChange={ handleChange }
+            value={formData.uom_id}
+            onChange={handleChange}
             className="px-4 py-2 border rounded-md focus:outline-none"
           >
             <option value="">Select UOM</option>
-            {uoms.map( uom => (
-              <option key={ uom.uom_id } value={ uom.uom_id }>
-                { uom.uom_name }
+            {uoms.map((uom) => (
+              <option key={uom.uom_id} value={uom.uom_id}>
+                {uom.uom_name}
               </option>
             ))}
           </select>
@@ -100,22 +100,22 @@ const AddProduct = ({ onProductAdded, onCancel }) => {
             type="text"
             name="price_per_unit"
             id="price_per_unit"
-            value={ formData.price_per_unit }
-            onChange={ handleChange }
+            value={formData.price_per_unit}
+            onChange={handleChange}
             className="px-4 py-2 border rounded-md focus:outline-none"
           />
         </div>
         <div className="flex justify-end">
-        <button
+          <button
             type="button"
-            onClick={ handleCancel }
+            onClick={handleCancel}
             className="bg-gray-200 px-4 py-2 mr-2 rounded-md hover:bg-gray-300 focus:outline-none"
           >
             Cancel
           </button>
           <button
             type="button"
-            onClick={ handleAdd }
+            onClick={handleAdd}
             className="bg-[#204e93] text-white px-4 py-2 rounded-md hover:bg-[#005ea3] focus:outline-none"
           >
             Add
