@@ -161,4 +161,4 @@ def get_uom(connection):
     return jsonify(uom)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
