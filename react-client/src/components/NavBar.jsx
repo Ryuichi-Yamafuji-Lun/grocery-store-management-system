@@ -32,7 +32,6 @@ const NavBar = () => {
             About
           </a>
         </li>
-        {/* Add more menu items here */}
       </ul>
 
       {/* Hamburger */}
@@ -52,7 +51,6 @@ const NavBar = () => {
             About
           </a>
         </li>
-        {/* Add more mobile menu items here */}
       </ul>
     </div>
   )
