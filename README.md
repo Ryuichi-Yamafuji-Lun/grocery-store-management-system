@@ -11,4 +11,4 @@ A full-stack PokéMart themed management system with hidden easter eggs.
 ## About the project
 
 ## Deployment
-This project is deployed using Google Cloud Platform
+This project is deployed using 
