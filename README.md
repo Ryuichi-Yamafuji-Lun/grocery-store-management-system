@@ -6,7 +6,7 @@ A full-stack PokéMart themed management system with hidden easter eggs.
 - React
 - Flask
 - mySQL
-- tailwindcss
+- Tailwindcss
 
 ## About the project
 
