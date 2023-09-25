@@ -4,14 +4,6 @@
 
 @import "tailwindcss/utilities";
 
-/* Load and apply the Pokemon Solid font */
-@font-face {
-    font-family: 'Pokemon Solid';
-    src: url('./assets/fonts/Pokemon Classic.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
 /* Apply styles to the body */
 body {
     background: url('./assets/pokemon-sprites/Background/pokemart-background.jpg') center/cover no-repeat fixed;
