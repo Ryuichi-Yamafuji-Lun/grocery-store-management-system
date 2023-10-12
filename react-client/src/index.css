@@ -4,19 +4,6 @@
 
 @import "tailwindcss/utilities";
   
-  /* Apply style to About component */
-  .project-box {
-    background-color: rgba(255, 255, 255, 0.15); 
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    margin: 0 auto;
-    max-width: 800px;
-    overflow: auto;
-    /* Apply the glass effect */
-    backdrop-filter: blur(10px); 
-    /* Adjust styles for screens smaller than 768px */
-    @media (max-width: 768px) {
-      padding: 10px;
-    }
-  }
+body {
+  @apply bg-background-main
+}

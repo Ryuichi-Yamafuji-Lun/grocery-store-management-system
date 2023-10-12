@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const WelcomePage = () => {
 
   return (
-    <div className="welcome-page flex flex-col justify-center items-center h-screen bg-blue-800">
+    <div className="welcome-page flex flex-col justify-center items-center h-screen">
       <div className="max-w-[1000px] mx-auto px-8 text-center">
         <div className="flex items-center justify-center mb-4">
           <h1 className="text-4xl sm:text-7xl font-bold">
