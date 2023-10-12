@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import axios from "axios";
 import UpdateProduct from "./UpdateProduct";
 import AddProduct from "./AddProduct";
-import PokeBall from "../../assets/pokemon-sprites/Items/ball/poke.png";
-import PokeBallSound from "../../assets/audio/catch.mp3"
 
 const ManageProducts = () => {
   const [products, setProducts] = useState([]);
@@ -85,28 +83,12 @@ const ManageProducts = () => {
       });
   };
 
-  const [isAudioPlayed, setIsAudioPlayed] = useState(false);
-  
-  const playAudio = () => {
-    if (!isAudioPlayed) {
-      const audio = new Audio(PokeBallSound);
-      audio.play();
-      setIsAudioPlayed(true);
-    }
-  };
-
   return (
     <div name="main" className="w-full min-h-screen flex flex-col items-center">
-      <div className="w-full text-white p-4">
+      <div className="w-full p-4">
         <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 md:space-x-2">
           <div className="text-4xl">
             Manage Products
-            <img
-              src={PokeBall}
-              alt="Pokeball"
-              className={`w-12 md:w-20 mb-2 inline-block align-middle `}
-              onClick={playAudio}
-            />
           </div>
           <div className="flex space-x-2">
             <Link

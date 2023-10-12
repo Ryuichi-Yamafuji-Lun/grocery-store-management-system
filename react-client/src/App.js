@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 
-import NavBar from "./components/NavBar";
+import SideBar from './components/SideBar';
 import ManageProducts from "./components/Product/ManageProducts";
 import AddProduct from "./components/Product/ManageProducts";
 import WelcomePage from "./components/WelcomePage";
@@ -14,7 +14,6 @@ function App() {
 
   return (
     <div>
-      <NavBar />
       <Routes>
         <Route path='/' element={<WelcomePage />} />
         <Route path='/mainpage' element={<MainPage />} />

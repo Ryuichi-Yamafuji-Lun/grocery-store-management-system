@@ -3,32 +3,6 @@
 @import "tailwindcss/components";
 
 @import "tailwindcss/utilities";
-
-/* Apply styles to the body */
-body {
-    background: url('./assets/pokemon-sprites/Background/pokemart-background.jpg') center/cover no-repeat fixed;
-    font-family: 'Pokemon Solid', sans-serif; 
-    margin: 0;
-  }
-  
-  /* Apply styles to the WelcomePage component */
-  .welcome-page {
-    background: url('./assets/pokemon-sprites/Background/pokemart-background.jpg') center/cover no-repeat fixed;
-    min-height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #fff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    overflow-y: scroll;
-    /* Adjust styles for screens smaller than 768px */
-    @media (max-width: 768px) {
-      font-size: 18px;
-    }
-  }
   
   /* Apply style to About component */
   .project-box {

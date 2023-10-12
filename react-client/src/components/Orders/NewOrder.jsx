@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import PokeBall from "../../assets/pokemon-sprites/Pokemon/snorlax.gif";
 
 const NewOrder = () => {
   const [products, setProducts] = useState([]);
@@ -90,16 +89,11 @@ const NewOrder = () => {
     <div name='main' className="w-full min-h-screen flex flex-col items-center">
       <div className="mx-auto flex flex-col md:flex-row justify-between items-center p-2 md:p-4">
         <div className="flex items-center">
-          <h1 className="text-2xl md:text-4xl text-white mr-2 md:mr-4 inline-block whitespace-nowrap">
+          <h1 className="text-2xl md:text-4xl mr-2 md:mr-4 inline-block whitespace-nowrap">
             New Order
           </h1>
-          <img
-            src={PokeBall}
-            alt="Pokeball"
-            className="w-8 md:w-12 mb-2 inline-block align-middle"
-          />
         </div>
-        <div className="w-full md:w-auto">
+        <div className="w-full">
           <input
             className="shadow-lg bg-white w-full p-2 md:p-4"
             type="text"

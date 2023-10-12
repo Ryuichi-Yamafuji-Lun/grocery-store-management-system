@@ -52,10 +52,10 @@ const MainPage = () => {
 
   return (
     <div name='main' className="w-full min-h-screen flex flex-col items-center">
-      <div className="w-full text-white p-4">
+      <div className="w-full p-4">
         <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 md:space-x-2">
           <div className="text-4xl">
-            Welcome to PokéMart
+            Grocery Store
           </div>
           <div className="flex space-x-2">
             <Link to="/showproducts" className="bg-[#204e93] text-gray-100 py-2 px-3 transition hover:scale-105">Products</Link>
