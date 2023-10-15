@@ -58,7 +58,6 @@ const ShowOrder = () => {
             Grocery Store
           </div>
           <div className="flex space-x-2">
-            <Link to="/showproducts" className="bg-[#204e93] text-gray-100 py-2 px-3 transition hover:scale-105">Products</Link>
             <Link to="/neworder" className="bg-[#204e93] text-gray-100 py-2 px-3 transition hover:scale-105">New Orders</Link>
           </div>        
         </div>
@@ -105,7 +104,7 @@ const ShowOrder = () => {
             </div>
           </div>
         ) : (
-          <div className="mx-auto p-4 text-center">No orders available.</div>
+          <div className="mx-auto p-4 items-center">No orders available.</div>
         )}
       </div>
     </div>

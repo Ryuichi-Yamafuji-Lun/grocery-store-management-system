@@ -22,13 +22,13 @@ const CustomerOrder = () => {
 
   return (
     <div name="main" className="w-full min-h-screen flex flex-col items-center">
-      <div className="mx-auto p-4">
+      <div className="w-full p-4">
         <h1 className="text-2xl md:text-4xl">Order Details</h1>
         <p>Order ID: {order.order_id}</p>
         <p>Customer: {order.customer_name}</p>
         <p>Date: {order.date}</p>
       </div>
-      <div className="mx-auto overflow-x-auto p-4 max-w-full">
+      <div className="w-full overflow-x-auto p-4 max-w-full">
         <div className="table-container">
           <table className="shadow-lg bg-white min-w-full">
             <thead>
@@ -53,14 +53,11 @@ const CustomerOrder = () => {
             </tbody>
           </table>
         </div>
+        <div className="mt-4">
+          <Link to="/mainpage" className="bg-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-400 focus:outline-none">
+            Return
+          </Link>
       </div>
-      <div className="mx-auto flex flex-row justify-between items-center p-4">
-        <Link
-          to="/mainpage"
-          className="bg-[#204e93] text-gray-100 py-2 px-3 mx-2 transition hover:scale-115"
-        >
-          Return
-        </Link>
       </div>
     </div>
   )

@@ -90,50 +90,45 @@ const ManageProducts = () => {
           <div className="text-4xl">
             Manage Products
           </div>
-          <div className="flex space-x-2">
-            <Link
-              to="/showproducts"
-              className="bg-[#204e93] text-gray-100 py-2 px-3 transition hover:scale-105"
-            >
-              Return
-            </Link>
-          </div>
+
+          {!editMode && !selectedProduct && !showAddForm && (
+            <div className="flex space-x-2">
+              <button
+                onClick={() => {
+                  setSelectedProduct(null);
+                  setEditMode(false);
+                  setShowAddForm(true);
+                }}
+                className="bg-[#204e93] text-gray-100 py-2 px-4 mx-auto transition hover:scale-105"
+              >
+                Add New Product
+              </button>
+            </div>
+          )}
         </div>
       </div>
-      {!editMode && !selectedProduct && !showAddForm && (
-        <div className="w-full text-center p-4">
-          <button
-            onClick={() => {
-              setSelectedProduct(null);
-              setEditMode(false);
-              setShowAddForm(true);
-            }}
-            className="bg-[#204e93] text-gray-100 py-2 px-4 mx-auto transition hover:scale-105"
-          >
-            Add New Product
-          </button>
-        </div>
-      )}
-      {(editMode || selectedProduct) ? (
-        <UpdateProduct
-          product={selectedProduct}
-          onCancel={() => {
-            setEditMode(false);
-            setSelectedProduct(null);
-          }}
-          onProductUpdated={handleProductUpdated}
-        />
-      ) : null}
-  
-      {!editMode && !selectedProduct && showAddForm && (
-        <AddProduct
-          onProductAdded={handleProductAdded}
-          onCancel={() => {
-            setShowAddForm(false);
-            setSelectedProduct(null);
-          }}
-        />
-      )}
+      <div className="w-full p-4">
+        {(editMode || selectedProduct) ? (
+            <UpdateProduct
+              product={selectedProduct}
+              onCancel={() => {
+                setEditMode(false);
+                setSelectedProduct(null);
+              }}
+              onProductUpdated={handleProductUpdated}
+            />
+          ) : null}
+      
+          {!editMode && !selectedProduct && showAddForm && (
+            <AddProduct
+              onProductAdded={handleProductAdded}
+              onCancel={() => {
+                setShowAddForm(false);
+                setSelectedProduct(null);
+              }}
+            />
+          )}
+      </div>
   
       <div className="mx-auto w-full max-w-screen-xl p-4">
         <div className="overflow-x-auto">
@@ -174,6 +169,11 @@ const ManageProducts = () => {
               ))}
             </tbody>
           </table>
+        </div>
+        <div className="mt-4">
+          <Link to="/showproducts" className="bg-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-400 focus:outline-none">
+            Return
+          </Link>
         </div>
       </div>
     </div>

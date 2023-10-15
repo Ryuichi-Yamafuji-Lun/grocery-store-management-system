@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
+
 
 const NewOrder = () => {
   const [products, setProducts] = useState([]);
@@ -87,23 +89,23 @@ const NewOrder = () => {
 
   return (
     <div name='main' className="w-full min-h-screen flex flex-col items-center">
-      <div className="mx-auto flex flex-col md:flex-row justify-between items-center p-2 md:p-4">
-        <div className="flex items-center">
-          <h1 className="text-2xl md:text-4xl mr-2 md:mr-4 inline-block whitespace-nowrap">
+      <div className="w-full p-4">
+        <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 md:space-x-2">
+          <div className="text-4xl">
             New Order
-          </h1>
-        </div>
-        <div className="w-full">
-          <input
-            className="shadow-lg bg-white w-full p-2 md:p-4"
-            type="text"
-            placeholder="Name"
-            value={customerName}
-            onChange={(e) => setCustomerName(e.target.value)}
-          />
+          </div>
+          <div>
+            <input
+              className="shadow-lg bg-white w-full p-2 md:p-4"
+              type="text"
+              placeholder="Name"
+              value={customerName}
+              onChange={(e) => setCustomerName(e.target.value)}
+            />
+          </div>
         </div>
       </div>
-      <div className="mx-auto p-2 md:p-4 overflow-x-auto max-w-screen-md">
+      <div className="w-full p-4">
         <div className="table-container w-full">
           <table className="shadow-lg bg-white w-full table-fixed">
             <thead>
@@ -156,20 +158,25 @@ const NewOrder = () => {
             </tbody>
           </table>
         </div>
-      </div>
-      <div className="mx-auto flex flex-col md:flex-row justify-between items-center p-4">
-        <button
-          onClick={handleAddRow}
-          className="bg-[#204e93] text-gray-100 py-2 px-3 mb-2 md:mb-0 mx-2 transition hover:scale-105"
-        >
-          Add Row
-        </button>
-        <button
-          onClick={handleOrderSubmit}
-          className="bg-[#204e93] text-gray-100 py-2 px-3 mx-2 transition hover:scale-105"
-        >
-          Submit Order
-        </button>
+        <div className="mt-4 flex justify-between items-center">
+          <Link to="/showproducts" className="bg-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-400 focus:outline-none">
+            Return
+          </Link>
+          <div>
+            <button
+              onClick={handleAddRow}
+              className="bg-[#204e93] text-gray-100 py-2 px-3 mb-2 md:mb-0 mx-2 transition hover:scale-105"
+            >
+              Add Row
+            </button>
+            <button
+              onClick={handleOrderSubmit}
+              className="bg-[#204e93] text-gray-100 py-2 px-3 mx-2 transition hover:scale-105"
+            >
+              Submit Order
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   )  
