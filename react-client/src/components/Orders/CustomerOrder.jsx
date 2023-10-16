@@ -21,7 +21,7 @@ const CustomerOrder = () => {
   }, [orderId]);
 
   return (
-    <div name="main" className="w-full min-h-screen flex flex-col items-center">
+    <div name="main" className="w-full min-h-screen flex flex-col items-center xl:pl-6">
       <div className="w-full p-4">
         <h1 className="text-2xl md:text-4xl">Order Details</h1>
         <p>Order ID: {order.order_id}</p>

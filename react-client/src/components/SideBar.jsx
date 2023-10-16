@@ -5,7 +5,7 @@ import { BsFillQuestionSquareFill, BsArrowLeftShort } from "react-icons/bs";
 
 const SideBar = () => {
   return (
-    <div className="fixed top-0 left-0 z-40 w-auto h-screen transition-transform -translate-x-full md:translate-x-0 bg-dark-green">
+    <div className="fixed top-0 left-0 z-40 w-auto h-screen transition-transform -translate-x-full xl:translate-x-0 bg-dark-green">
       <div className="h-full px-4 py-4 overflow-y-auto shadow-lg">
         <ul className="space-y-2 font-medium">
           <li>

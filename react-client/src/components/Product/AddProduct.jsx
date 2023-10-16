@@ -58,7 +58,7 @@ const AddProduct = ({ onProductAdded, onCancel }) => {
   };
 
   return (
-    <div className="max-w-screen-xl mx-auto flex justify-center">
+    <div className="max-w-screen-xl mx-auto flex justify-center xl:pl-6">
       <form className="shadow-lg bg-background-second w-full p-4">
         <div className="flex flex-col mb-4">
           <label htmlFor="name" className="text-lg mb-2">

@@ -17,7 +17,7 @@ const ShowProducts = () => {
   }, []);
 
   return (
-    <div name='main' className="min-h-screen">
+    <div name='main' className="min-h-screen xl:pl-6">
       <div className="p-4">
         <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 md:space-x-2">
           <div className="text-2xl md:text-4xl text-gray-800">
