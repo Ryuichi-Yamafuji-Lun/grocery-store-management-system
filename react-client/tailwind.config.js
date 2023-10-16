@@ -8,9 +8,11 @@ module.exports = {
       colors: {
         // Color schema for the website
         'background-main': '#FFFFFF',
+        'background-second': '#F8F7F5',
         'line-color': '#000000',
-        'light-green': '#9BE931',
-        'dark-green': '#00754B',
+        'light-green': '#479B7C',
+        'dark-green': '#00674b',
+        'return-color': '#C6C6C6',
       },
 
       fontFamily: {

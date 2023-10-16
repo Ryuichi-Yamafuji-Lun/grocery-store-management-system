@@ -11,7 +11,7 @@ const WelcomePage = () => {
             Welcome
           </h1>
         </div>
-        <p className="text-2xl py-2 max-w-[700px">Grocery Store Management System</p>
+        <p className="text-2xl py-2 max-w-[700px]">Grocery Store Management System</p>
         <p>Made with React, mySQL, and Flask</p>
       </div>
       <div className="py-8">

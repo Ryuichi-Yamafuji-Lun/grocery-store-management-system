@@ -58,8 +58,8 @@ const AddProduct = ({ onProductAdded, onCancel }) => {
   };
 
   return (
-    <div className="mx-auto w-full flex justify-center p-4">
-      <form className="shadow-lg bg-white w-full p-4">
+    <div className="max-w-screen-xl mx-auto flex justify-center">
+      <form className="shadow-lg bg-background-second w-full p-4">
         <div className="flex flex-col mb-4">
           <label htmlFor="name" className="text-lg mb-2">
             Product Name
@@ -109,14 +109,14 @@ const AddProduct = ({ onProductAdded, onCancel }) => {
           <button
             type="button"
             onClick={handleCancel}
-            className="bg-gray-200 px-4 py-2 mr-2 rounded-md hover:bg-gray-300 focus:outline-none"
+            className="bg-gray-200 px-4 py-2 mr-2 rounded-md transition hover:scale-105 hover:bg-gray-300 focus:outline-none"
           >
             Cancel
           </button>
           <button
             type="button"
             onClick={handleAdd}
-            className="bg-[#204e93] text-white px-4 py-2 rounded-md hover:bg-[#005ea3] focus:outline-none"
+            className="bg-dark-green text-white px-4 py-2 rounded-md transition hover:scale-105 focus:outline-none"
           >
             Add
           </button>

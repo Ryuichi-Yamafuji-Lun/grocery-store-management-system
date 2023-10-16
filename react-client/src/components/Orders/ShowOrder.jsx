@@ -55,10 +55,10 @@ const ShowOrder = () => {
       <div className="w-full p-4">
         <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 md:space-x-2">
           <div className="text-4xl">
-            Grocery Store
+            Orders
           </div>
           <div className="flex space-x-2">
-            <Link to="/neworder" className="bg-[#204e93] text-gray-100 py-2 px-3 transition hover:scale-105">New Orders</Link>
+            <Link to="/neworder" className="bg-dark-green text-white py-2 px-3 rounded-md transition hover:scale-105">New Orders</Link>
           </div>        
         </div>
       </div>
@@ -66,21 +66,21 @@ const ShowOrder = () => {
         {orders.length > 0 ? (
           <div className="max-w-screen-xl mx-auto">
             <div className="overflow-x-auto">
-              <table className="shadow-lg bg-white min-w-full">
+              <table className="shadow-lg bg-background-second min-w-full">
                 {/* Table header */}
                 <thead>
-                  <tr className="bg-blue-100">
-                    <th className="border text-center px-4 py-2"></th>
-                    <th className="border text-center px-8 py-4">Date</th>
-                    <th className="border text-center px-8 py-4">Order #</th>
-                    <th className="border text-center px-8 py-4">Customer</th>
-                    <th className="border text-center px-8 py-4">Total Cost</th>
+                  <tr className="bg-dark-green text-white">
+                    <th className="text-center px-4 py-2"></th>
+                    <th className="text-center px-8 py-4">Date</th>
+                    <th className="text-center px-8 py-4">Order #</th>
+                    <th className="text-center px-8 py-4">Customer</th>
+                    <th className="text-center px-8 py-4">Total Cost</th>
                   </tr>
                 </thead>
                 {/* Table body */}
                 <tbody>
                   {orders.map(order => (
-                    <tr key={order.order_id}>
+                    <tr key={order.order_id} className="hover:bg-gray-100">
                       <td className="py-2 px-4 text-center">
                         <button
                           onClick={() => handleDeleteOrder(order.order_id)}
@@ -91,7 +91,7 @@ const ShowOrder = () => {
                       </td>
                       <td className="py-2 px-4 text-center">{order.date}</td>
                       <td className="py-2 px-4 text-center">{order.order_id}</td>
-                      <td className="py-2 px-4 text-center">
+                      <td className="py-2 px-4 text-center text-dark-green underline hover:text-light-green">
                         <Link to={`/customerOrder/${order.order_id}`}>
                           {order.customer_name}
                         </Link>

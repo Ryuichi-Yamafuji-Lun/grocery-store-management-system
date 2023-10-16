@@ -34,7 +34,7 @@ const ManageProducts = () => {
   }, []);
 
   useEffect(() => {
-    // Fetch products whenever the products state is updated (e.g., after adding or updating a product)
+    // Fetch products whenever the products state is updated 
     const backendURL = process.env.REACT_APP_BACKEND_URL;
 
     axios
@@ -45,7 +45,7 @@ const ManageProducts = () => {
       .catch( error => {
         console.error("Error fetching products:", error);
       });
-  }, [products]); // Depend on the products state to trigger the effect
+  }, [products]); 
 
   const handleProductUpdated = (updatedProduct) => {
     setProducts( prevProducts =>
@@ -84,10 +84,10 @@ const ManageProducts = () => {
   };
 
   return (
-    <div name="main" className="w-full min-h-screen flex flex-col items-center">
-      <div className="w-full p-4">
+    <div className="min-h-screen">
+      <div className="p-4">
         <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 md:space-x-2">
-          <div className="text-4xl">
+          <div className="text-4xl text-gray-800">
             Manage Products
           </div>
 
@@ -99,7 +99,7 @@ const ManageProducts = () => {
                   setEditMode(false);
                   setShowAddForm(true);
                 }}
-                className="bg-[#204e93] text-gray-100 py-2 px-4 mx-auto transition hover:scale-105"
+                className="bg-dark-green text-white py-2 px-4 rounded-md transition hover:scale-105"
               >
                 Add New Product
               </button>
@@ -107,7 +107,7 @@ const ManageProducts = () => {
           )}
         </div>
       </div>
-      <div className="w-full p-4">
+      <div className="p-4">
         {(editMode || selectedProduct) ? (
             <UpdateProduct
               product={selectedProduct}
@@ -130,37 +130,37 @@ const ManageProducts = () => {
           )}
       </div>
   
-      <div className="mx-auto w-full max-w-screen-xl p-4">
+      <div className="max-w-screen-xl mx-auto">
         <div className="overflow-x-auto">
-          <table className="shadow-lg bg-white min-w-full">
+          <table className="w-full table-auto bg-background-second shadow-lg rounded-md">
             <thead>
-              <tr className="bg-blue-100">
-                <th className="border text-center px-8 py-4">Product ID</th>
-                <th className="border text-center px-8 py-4">Product</th>
-                <th className="border text-center px-8 py-4">UoM</th>
-                <th className="border text-center px-8 py-4">Price per Unit</th>
-                <th className="border text-center px-8 py-4">Action</th>
+              <tr className="bg-dark-green text-white">
+                <th className="px-6 py-3 text-center">Product ID</th>
+                <th className="px-6 py-3 text-center">Product</th>
+                <th className="px-6 py-3 text-center">UoM</th>
+                <th className="px-6 py-3 text-center">Price per Unit</th>
+                <th className="px-6 py-3 text-center">Action</th>
               </tr>
             </thead>
             <tbody>
               {products.map(product => (
-                <tr key={product.product_id}>
-                  <td className="py-2 px-4 text-center">{product.product_id}</td>
-                  <td className="py-2 px-4 text-center">{product.name}</td>
-                  <td className="py-2 px-4 text-center">
+                <tr key={product.product_id} className="hover:bg-gray-100">
+                  <td className="px-6 py-4 text-center">{product.product_id}</td>
+                  <td className="px-6 py-4 text-center">{product.name}</td>
+                  <td className="px-6 py-4 text-center">
                     {uoms.find(uom => uom.uom_id === product.uom_id)?.uom_name}
                   </td>
-                  <td className="py-2 px-4 text-center">{product.price_per_unit}</td>
-                  <td className="py-2 px-4 text-center">
+                  <td className="px-6 py-4 text-center">{product.price_per_unit}</td>
+                  <td className="px-6 py-4 text-center">
                     <button
                       onClick={() => handleEdit(product)}
-                      className="bg-[#204e93] text-white px-4 py-2 rounded-md hover:bg-[#005ea3] focus:outline-none"
+                      className="bg-dark-green text-white px-4 py-2 rounded-md transition hover:scale-105 focus:outline-none"
                     >
                       Edit
                     </button>
                     <button
                       onClick={() => handleDelete(product)}
-                      className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 focus:outline-none ml-2"
+                      className="bg-gray-200 px-4 py-2 rounded-md transition hover:scale-105 focus:outline-none ml-2"
                     >
                       Delete
                     </button>
@@ -170,11 +170,11 @@ const ManageProducts = () => {
             </tbody>
           </table>
         </div>
-        <div className="mt-4">
-          <Link to="/showproducts" className="bg-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-400 focus:outline-none">
-            Return
-          </Link>
-        </div>
+      </div>
+      <div className="mx-auto w-full max-w-screen-xl mt-4">
+        <Link to="/showproducts" className="bg-gray-300 text-gray-800 py-2 px-4 rounded-md transition hover:bg-gray-400 focus:outline-none">
+          Return
+        </Link>
       </div>
     </div>
   )  

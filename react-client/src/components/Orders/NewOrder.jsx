@@ -105,15 +105,15 @@ const NewOrder = () => {
           </div>
         </div>
       </div>
-      <div className="w-full p-4">
+      <div className="max-w-screen-xl">
         <div className="table-container w-full">
-          <table className="shadow-lg bg-white w-full table-fixed">
+          <table className="shadow-lg bg-background-second w-full table-fixed">
             <thead>
-              <tr className="bg-blue-100">
-                <th className="border text-center py-1 md:py-2 w-1/4 md:w-auto">Product</th>
-                <th className="border text-center py-1 md:py-2 w-1/4 md:w-auto">Price per unit</th>
-                <th className="border text-center py-1 md:py-2 w-1/4 md:w-auto">Quantity</th>
-                <th className="border text-center py-1 md:py-2 w-1/4 md:w-auto">Total</th>
+              <tr className="bg-dark-green text-white">
+                <th className="text-center py-1 md:py-2 w-1/4 md:w-auto">Product</th>
+                <th className="text-center py-1 md:py-2 w-1/4 md:w-auto">Price per unit</th>
+                <th className="text-center py-1 md:py-2 w-1/4 md:w-auto">Quantity</th>
+                <th className="text-center py-1 md:py-2 w-1/4 md:w-auto">Total</th>
               </tr>
             </thead>
             <tbody>
@@ -124,7 +124,7 @@ const NewOrder = () => {
                       <select
                         value={selectedProduct.product_id || ""}
                         onChange={(e) => handleProductSelect(index, e.target.value)}
-                        className="w-full"
+                        className="w-full bg-background-second"
                       >
                         <option value="" disabled>Select</option>
                         {products.map((product) => (
@@ -146,7 +146,7 @@ const NewOrder = () => {
                         value={selectedProduct.quantity || ""}
                         onChange={(e) => handleQuantityChange(index, e.target.value)}
                         onBlur={(e) => handleQuantityChange(index, e.target.value)}
-                        className="w-full"
+                        className="w-full bg-background-second"
                       />
                     </div>
                   </td>
@@ -159,19 +159,19 @@ const NewOrder = () => {
           </table>
         </div>
         <div className="mt-4 flex justify-between items-center">
-          <Link to="/showproducts" className="bg-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-400 focus:outline-none">
+          <Link to="/mainpage" className="bg-return-color py-2 px-4 rounded-md transition hover:bg-gray-400 hover:scale-105 focus:outline-none">
             Return
           </Link>
           <div>
             <button
               onClick={handleAddRow}
-              className="bg-[#204e93] text-gray-100 py-2 px-3 mb-2 md:mb-0 mx-2 transition hover:scale-105"
+              className="bg-dark-green text-white py-2 px-3 mb-2 md:mb-0 mx-2 rounded-md transition hover:scale-105 hover:bg-blue-700"
             >
               Add Row
             </button>
             <button
               onClick={handleOrderSubmit}
-              className="bg-[#204e93] text-gray-100 py-2 px-3 mx-2 transition hover:scale-105"
+              className="bg-dark-green text-white py-2 px-3 mx-2 rounded-md transition hover:scale-105 hover:bg-blue-700"
             >
               Submit Order
             </button>

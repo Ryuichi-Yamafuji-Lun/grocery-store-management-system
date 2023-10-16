@@ -30,18 +30,18 @@ const CustomerOrder = () => {
       </div>
       <div className="w-full overflow-x-auto p-4 max-w-full">
         <div className="table-container">
-          <table className="shadow-lg bg-white min-w-full">
+          <table className="w-full table-auto bg-background-second shadow-lg rounded-md">
             <thead>
-              <tr className="bg-blue-100">
-                <th className="border text-center px-8 py-4">Product</th>
-                <th className="border text-center px-8 py-4">Price per unit</th>
-                <th className="border text-center px-8 py-4">Quantity</th>
-                <th className="border text-center px-8 py-4">Total</th>
+              <tr className="bg-dark-green text-white">
+                <th className="text-center px-8 py-4">Product</th>
+                <th className="text-center px-8 py-4">Price per unit</th>
+                <th className="text-center px-8 py-4">Quantity</th>
+                <th className="text-center px-8 py-4">Total</th>
               </tr>
             </thead>
             <tbody>
               {orderDetails.map((detail, index) => (
-                <tr key={index}>
+                <tr key={index} className="hover:bg-gray-100">
                   <td className="py-2 px-4 text-center">{detail.product_name}</td>
                   <td className="py-2 px-4 text-center">{detail.price_per_unit}</td>
                   <td className="py-2 px-4 text-center">{detail.quantity}</td>
@@ -54,10 +54,10 @@ const CustomerOrder = () => {
           </table>
         </div>
         <div className="mt-4">
-          <Link to="/mainpage" className="bg-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-400 focus:outline-none">
+          <Link to="/mainpage" className="bg-gray-300 text-gray-800 py-2 px-4 rounded-md transition hover:bg-gray-400 focus:outline-none">
             Return
           </Link>
-      </div>
+        </div>
       </div>
     </div>
   )
