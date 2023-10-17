@@ -54,7 +54,7 @@ const CustomerOrder = () => {
           </table>
         </div>
         <div className="mt-4">
-          <Link to="/mainpage" className="bg-gray-300 text-gray-800 py-2 px-4 rounded-md transition hover:bg-gray-400 focus:outline-none">
+          <Link to="/showorders" className="bg-gray-300 text-gray-800 py-2 px-4 rounded-md transition hover:bg-gray-400 focus:outline-none">
             Return
           </Link>
         </div>

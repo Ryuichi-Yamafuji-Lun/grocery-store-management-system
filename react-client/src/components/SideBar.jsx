@@ -21,7 +21,7 @@ const SideBar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/mainpage" className="flex items-center p-2 text-white rounded-lg hover:backdrop-blur-3xl hover:bg-slate-800/50 hover:shadow-[inset_0px_1px_0px_0px_rgba(148,163,184,0.1)] group">
+            <Link to="/showorders" className="flex items-center p-2 text-white rounded-lg hover:backdrop-blur-3xl hover:bg-slate-800/50 hover:shadow-[inset_0px_1px_0px_0px_rgba(148,163,184,0.1)] group">
               <FaShoppingCart className="w-5 h-5 text-white transition duration-75" />
               <span className="ml-3">Orders</span>
             </Link>

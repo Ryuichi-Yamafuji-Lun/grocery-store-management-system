@@ -67,7 +67,7 @@ const NewOrder = () => {
         .post(`${backendURL}/insertOrder`, order)
         .then( response => {
           console.log("Response from backend:", response.data);
-          window.location.href = "/mainpage";
+          window.location.href = "/showorders";
         })
         .catch( error => {
           if (error.response && error.response.data) {
@@ -106,7 +106,7 @@ const NewOrder = () => {
         </div>
       </div>
       <div className="max-w-screen-xl">
-        <div className="table-container w-full">
+        <div className="table-container w-full p-4">
           <table className="shadow-lg bg-background-second w-full table-fixed">
             <thead>
               <tr className="bg-dark-green text-white">
@@ -158,20 +158,20 @@ const NewOrder = () => {
             </tbody>
           </table>
         </div>
-        <div className="mt-4 flex justify-between items-center">
-          <Link to="/mainpage" className="bg-return-color py-2 px-4 rounded-md transition hover:bg-gray-400 hover:scale-105 focus:outline-none">
+        <div className="mt-4 flex justify-between items-center p-4">
+          <Link to="/showorders" className="bg-return-color py-2 px-4 rounded-md transition hover:bg-gray-400 hover:scale-105 focus:outline-none">
             Return
           </Link>
           <div>
             <button
               onClick={handleAddRow}
-              className="bg-dark-green text-white py-2 px-3 mb-2 md:mb-0 mx-2 rounded-md transition hover:scale-105 hover:bg-blue-700"
+              className="bg-dark-green text-white py-2 px-3 mb-2 md:mb-0 mx-2 rounded-md transition hover:scale-105"
             >
               Add Row
             </button>
             <button
               onClick={handleOrderSubmit}
-              className="bg-dark-green text-white py-2 px-3 mx-2 rounded-md transition hover:scale-105 hover:bg-blue-700"
+              className="bg-dark-green text-white py-2 px-3 mx-2 rounded-md transition hover:scale-105"
             >
               Submit Order
             </button>

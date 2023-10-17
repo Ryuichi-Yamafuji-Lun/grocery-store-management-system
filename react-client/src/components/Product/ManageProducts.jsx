@@ -131,7 +131,7 @@ const ManageProducts = () => {
       </div>
   
       <div className="max-w-screen-xl mx-auto">
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto p-4">
           <table className="w-full table-auto bg-background-second shadow-lg rounded-md">
             <thead>
               <tr className="bg-dark-green text-white">
@@ -171,7 +171,7 @@ const ManageProducts = () => {
           </table>
         </div>
       </div>
-      <div className="mx-auto w-full max-w-screen-xl mt-4">
+      <div className="mx-auto w-full max-w-screen-xl mt-4 p-4">
         <Link to="/showproducts" className="bg-gray-300 text-gray-800 py-2 px-4 rounded-md transition hover:bg-gray-400 focus:outline-none">
           Return
         </Link>
