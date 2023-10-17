@@ -6,34 +6,35 @@ import axios from "axios";
 const ShowOrder = () => {
   const [orders, setOrders] = useState([]);
   const [orderTotals, setOrderTotals] = useState({});
-  
+  const [ordersToShow, setOrdersToShow] = useState(10);
+
   useEffect(() => {
     const backendURL = process.env.REACT_APP_BACKEND_URL;
     axios.get(`${backendURL}/getAllOrders`).then(
       response => {
         setOrders(response.data);
-        //Getting order total
+        // Getting order total
         const totals = {};
-        response.data.forEach( order => {
+        response.data.forEach(order => {
           totals[order.order_id] = order.total;
         });
         setOrderTotals(totals);
       }
-    ).catch( error => {
+    ).catch(error => {
       console.error("Error fetching data:", error);
     });
   }, []);
-  
+
   const handleDeleteOrder = (order_id) => {
     const backendURL = process.env.REACT_APP_BACKEND_URL;
     axios
       .delete(`${backendURL}/deleteOrder/${order_id}`)
-      .then( response => {
+      .then(response => {
         console.log("Order deleted successfully", response);
         // Refresh the order list after successful deletion
         axios
           .get(`${backendURL}/getAllOrders`)
-          .then( response => {
+          .then(response => {
             setOrders(response.data);
             const totals = {};
             response.data.forEach((order) => {
@@ -41,13 +42,17 @@ const ShowOrder = () => {
             });
             setOrderTotals(totals);
           })
-          .catch( error => {
+          .catch(error => {
             console.error("Error fetching data:", error);
           });
       })
-      .catch( error => {
+      .catch(error => {
         console.error("Error deleting order:", error);
       });
+  };
+
+  const loadMoreOrders = () => {
+    setOrdersToShow(prevOrdersToShow => prevOrdersToShow + 10);
   };
 
   return (
@@ -59,7 +64,7 @@ const ShowOrder = () => {
           </div>
           <div className="flex space-x-2">
             <Link to="/neworder" className="bg-dark-green text-white py-2 px-3 rounded-md transition hover:scale-105">New Orders</Link>
-          </div>        
+          </div>
         </div>
       </div>
       <div className="w-full p-4">
@@ -79,7 +84,7 @@ const ShowOrder = () => {
                 </thead>
                 {/* Table body */}
                 <tbody>
-                  {orders.map(order => (
+                  {orders.slice(0, ordersToShow).map(order => (
                     <tr key={order.order_id} className="hover:bg-gray-100">
                       <td className="py-2 px-4 text-center">
                         <button
@@ -105,6 +110,14 @@ const ShowOrder = () => {
           </div>
         ) : (
           <div className="mx-auto p-4 items-center">No orders available.</div>
+        )}
+
+        {ordersToShow < orders.length && (
+          <div className="w-full text-center p-4">
+            <button onClick={loadMoreOrders} className="bg-dark-green text-white py-2 px-3 rounded-md transition hover:scale-105">
+              Load More
+            </button>
+          </div>
         )}
       </div>
     </div>
