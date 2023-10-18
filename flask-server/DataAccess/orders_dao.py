@@ -123,7 +123,7 @@ def insert_order(connection, order):
         with connection.cursor() as cursor:
             # Insert the order information into the 'orders' table
             order_query = "INSERT INTO grocerystore.orders (customer_name, date) VALUES (%s, %s)"
-            order_data = (order['customer_name'], format_date(datetime.now()))
+            order_data = (order['customer_name'], datetime.now().strftime('%Y-%m-%d'))
             cursor.execute(order_query, order_data)
             connection.commit()
 
@@ -151,6 +151,7 @@ def insert_order(connection, order):
 
             # Return the order ID for reference or further processing
             return order_id
+
     except mysql.connector.Error as e:
         # Rollback the transaction in case of an error
         connection.rollback()

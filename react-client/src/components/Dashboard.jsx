@@ -5,13 +5,13 @@ const Dashboard = () => {
   const [orders, setOrders] = useState([]);
   const [orderTotals, setOrderTotals] = useState({});
   const [products, setProducts] = useState([]);
-  const [productsToShow, setProductsToShow] = useState(5);
-  const [ordersToShow, setOrdersToShow] = useState(5);
+  const [productsToShow] = useState(5);
+  const [ordersToShow] = useState(5);
 
   useEffect(() => {
     const backendURL = process.env.REACT_APP_BACKEND_URL;
 
-    axios.get(`${backendURL}/getAllOrders`).then((response) => {
+    axios.get(`${backendURL}/getRecentOrders`).then((response) => {
       setOrders(response.data.slice(0, ordersToShow));
       // Getting order total
       const totals = {};
