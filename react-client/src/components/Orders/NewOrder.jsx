@@ -124,7 +124,7 @@ const NewOrder = () => {
                       <select
                         value={selectedProduct.product_id || ""}
                         onChange={(e) => handleProductSelect(index, e.target.value)}
-                        className="w-full bg-background-second"
+                        className="w-full bg-background-second text-center"
                       >
                         <option value="" disabled>Select</option>
                         {products.map((product) => (
@@ -146,7 +146,7 @@ const NewOrder = () => {
                         value={selectedProduct.quantity || ""}
                         onChange={(e) => handleQuantityChange(index, e.target.value)}
                         onBlur={(e) => handleQuantityChange(index, e.target.value)}
-                        className="w-full bg-background-second"
+                        className="w-full bg-background-second text-center"
                       />
                     </div>
                   </td>

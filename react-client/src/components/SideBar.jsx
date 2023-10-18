@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { FaShoppingCart } from "react-icons/fa"
 import { IoMdHome, IoIosListBox } from "react-icons/io";
 import { BsArrowLeftShort } from "react-icons/bs";
-import GSMSLOGO from "../assets/GSMSLOGO.png";
+import GSMSLOGO from "../assets/logo/GSMSLOGO.png";
 
 const SideBar = () => {
   return (
