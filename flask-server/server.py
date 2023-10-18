@@ -93,6 +93,21 @@ def get_all_orders(connection):
     
     return jsonify(orders)
 
+@app.route('/getRecentOrders', methods=['GET'])
+@handle_db_connection
+def get_recent_orders_route(connection):
+    try:
+        recent_orders = orders_dao.get_recent_orders(connection)
+
+        if "error" in recent_orders:
+            return jsonify(recent_orders), 500
+
+        return jsonify(recent_orders)
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
 @app.route('/getOrderDetails/<int:order_id>', methods=['GET'])
 @handle_db_connection
 def get_order_details(connection, order_id):

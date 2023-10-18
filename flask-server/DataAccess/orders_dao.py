@@ -8,16 +8,20 @@ def format_date(date):
     return date.strftime(DATE_FORMAT)
 
 def calculate_order_total(order_id, connection):
-    with connection.cursor() as cursor:
-        query = "SELECT SUM(quantity * price_per_unit) AS total FROM order_detail " \
-                "LEFT JOIN products ON order_detail.product_id = products.product_id " \
-                "WHERE order_detail.order_id = %s"
-        data = (order_id,)
-        cursor.execute(query, data)
-        result = cursor.fetchone()
-        if result and result[0]:
-            return float(result[0])
-        return 0.0
+    try:
+        with connection.cursor() as cursor:
+            query = "SELECT SUM(quantity * price_per_unit) AS total FROM order_detail " \
+                    "LEFT JOIN products ON order_detail.product_id = products.product_id " \
+                    "WHERE order_detail.order_id = %s"
+            data = (order_id,)
+            cursor.execute(query, data)
+            result = cursor.fetchone()
+            if result and result[0]:
+                return float(result[0])
+            return 0.0
+        
+    except mysql.connector.Error as e:
+        raise Exception("Error calculating order total:", e)
 
 def get_order_by_id(connection, order_id):
     try:
@@ -35,18 +39,18 @@ def get_order_by_id(connection, order_id):
                     'order_details': get_order_details(connection, order_id),
                 }
                 return order
+            
             else:
                 return {"error": "Order not found"}
     except mysql.connector.Error as e:
         raise Exception("Error executing MySQL GET ORDER BY ID query:", e)
-    
+
 def get_all_orders(connection):
     try:
         with connection.cursor() as cursor:
             query = "SELECT * FROM orders"
             cursor.execute(query)
 
-            # Necessary so there is no error 
             rows = cursor.fetchall()
 
             response = []
@@ -59,12 +63,37 @@ def get_all_orders(connection):
                     'total': total,
                     'order_details': get_order_details(connection, order_id),
                 })
-            
-            return response
 
+            return response
+        
     except mysql.connector.Error as e:
-        raise Exception("Error executing MySQL GET ALL ORDERS query:", e) 
-    
+        raise Exception("Error executing MySQL GET ALL ORDERS query:", e)
+
+def get_recent_orders(connection):
+    try:
+        with connection.cursor() as cursor:
+            query = "SELECT * FROM orders ORDER BY date DESC LIMIT 5"
+            cursor.execute(query)
+
+            rows = cursor.fetchall()
+
+            response = []
+            for (order_id, customer_name, date) in rows:
+                total = calculate_order_total(order_id, connection)
+                response.append({
+                    'order_id': order_id,
+                    'customer_name': customer_name,
+                    'date': format_date(date),
+                    'total': total,
+                    'order_details': get_order_details(connection, order_id),
+                })
+
+            return response
+        
+    except mysql.connector.Error as e:
+        raise Exception("Error executing MySQL GET RECENT ORDERS query:", e)
+
+
 def get_order_details(connection, order_id):
     try:
         with connection.cursor() as cursor:
@@ -86,16 +115,15 @@ def get_order_details(connection, order_id):
                 })
 
             return records
-
     except mysql.connector.Error as e:
-        raise Exception("Error executing MySQL GET ORDER_DETAIL query:", e)  
+        raise Exception("Error executing MySQL GET ORDER_DETAIL query:", e)
 
 def insert_order(connection, order):
     try:
         with connection.cursor() as cursor:
             # Insert the order information into the 'orders' table
             order_query = "INSERT INTO grocerystore.orders (customer_name, date) VALUES (%s, %s)"
-            order_data = (order['customer_name'], datetime.now().strftime('%Y-%m-%d'))
+            order_data = (order['customer_name'], format_date(datetime.now()))
             cursor.execute(order_query, order_data)
             connection.commit()
 
@@ -123,12 +151,11 @@ def insert_order(connection, order):
 
             # Return the order ID for reference or further processing
             return order_id
-
     except mysql.connector.Error as e:
         # Rollback the transaction in case of an error
         connection.rollback()
         raise Exception("Error executing MySQL INSERT ORDER query:", e)
-    
+
 def delete_order(connection, order_id):
     try:
         with connection.cursor() as cursor:
@@ -138,11 +165,10 @@ def delete_order(connection, order_id):
             cursor.execute(delete_order_details_query, data)
 
             # SQL query to delete an order from the 'orders' table
-            query = ("DELETE FROM grocerystore.orders WHERE order_id = %s")
+            query = "DELETE FROM grocerystore.orders WHERE order_id = %s"
             data = (order_id,)
             cursor.execute(query, data)
 
             connection.commit()
-
     except mysql.connector.Error as e:
         raise Exception("Error executing MySQL DELETE ORDER query:", e)
