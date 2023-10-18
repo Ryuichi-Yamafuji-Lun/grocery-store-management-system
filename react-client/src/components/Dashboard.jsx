@@ -40,26 +40,26 @@ const Dashboard = () => {
 
         <div className="w-full p-4">
         <div className="max-w-screen-xl mx-auto overflow-x-auto">
-            <div className="text-4xl pb-2"> Orders </div>
-            <table className="shadow-lg bg-background-second min-w-full">
-            <thead>
-                <tr className="bg-dark-green text-white">
-                <th className="text-center px-8 py-4">Customer</th>
-                <th className="text-center px-8 py-4">Date</th>
-                <th className="text-center px-8 py-4">Total Cost</th>
-                </tr>
-            </thead>
-            <tbody>
-                {orders.map((order) => (
-                <tr key={order.order_id} className="hover:bg-gray-100">
-                    <td className="py-2 px-4 text-center">{order.customer_name}</td>
-                    <td className="py-2 px-4 text-center">{order.date}</td>
-                    <td className="py-2 px-4 text-center">{orderTotals[order.order_id]}</td>
-                </tr>
-                ))}
-            </tbody>
-            </table>
-        </div>
+            <div className="text-4xl pb-2"> Recent Orders </div>
+              <table className="bg-background-second min-w-full">
+                <thead>
+                    <tr className="bg-dark-green text-white">
+                    <th className="text-center px-8 py-4">Customer</th>
+                    <th className="text-center px-8 py-4">Date</th>
+                    <th className="text-center px-8 py-4">Total Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {orders.map((order) => (
+                    <tr key={order.order_id} className="hover:bg-gray-100">
+                        <td className="py-2 px-4 text-center">{order.customer_name}</td>
+                        <td className="py-2 px-4 text-center">{order.date}</td>
+                        <td className="py-2 px-4 text-center">{orderTotals[order.order_id]}</td>
+                    </tr>
+                    ))}
+                </tbody>
+              </table>
+          </div>
         </div>
         <div className="w-full p-4">
             <div className="max-w-screen-xl mx-auto overflow-x-auto">
