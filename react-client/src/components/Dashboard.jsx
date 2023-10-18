@@ -31,16 +31,10 @@ const Dashboard = () => {
   }, [productsToShow, ordersToShow]);
 
   return (
-    <div name="main" className="w-full min-h-screen flex flex-col items-center xl:pl-6">
-        <div className="w-full pt-4">
-            <div className="max-w-screen-xl mx-auto flex flex-col text-center">
-                <div className="text-4xl">Dashboard</div>
-            </div>
-        </div>
-
+    <div name="main" className="w-full min-h-screen flex flex-col items-center xl:pl-6 pt-4">
         <div className="w-full p-4">
         <div className="max-w-screen-xl mx-auto overflow-x-auto">
-            <div className="text-4xl pb-2"> Recent Orders </div>
+            <div className="text-4xl font-bold pb-2"> Recent Orders </div>
               <table className="bg-background-second min-w-full">
                 <thead>
                     <tr className="bg-dark-green text-white">
@@ -63,7 +57,7 @@ const Dashboard = () => {
         </div>
         <div className="w-full p-4">
             <div className="max-w-screen-xl mx-auto overflow-x-auto">
-                <div className="text-4xl pb-2"> Products </div>
+                <div className="text-4xl font-bold pb-2"> Products </div>
                 <table className="shadow-lg bg-background-second min-w-full">
                     <thead>
                         <tr className="bg-dark-green text-white">

@@ -11,7 +11,6 @@ import AddProduct from "./components/Product/ManageProducts";
 import ShowOrder from './components/Orders/ShowOrder';
 import CustomerOrder from "./components/Orders/CustomerOrder";
 import NewOrder from "./components/Orders/NewOrder";
-import About from "./components/About";
 
 
 function App() {
@@ -25,7 +24,6 @@ function App() {
       <Route path="/showproducts" element={<MainLayout><ShowProducts /></MainLayout>} />
       <Route path="/manageproducts" element={<MainLayout><ManageProducts /></MainLayout>} />
       <Route path="/addproduct" element={<MainLayout><AddProduct /></MainLayout>} />
-      <Route path="/about" element={<MainLayout><About /></MainLayout>} />
     </Routes>
   );
 }
