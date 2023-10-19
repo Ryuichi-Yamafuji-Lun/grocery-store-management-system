@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 // Created With Logos
@@ -76,9 +75,15 @@ const WelcomePage = () => {
       </div>
 
       {/* Footer */}
-      <div className='p-4'>
-        
+      <div className='p-4 flex items-center justify-end'>
+        <p className='text-xl mr-4'>Built with: </p>
+        <BiLogoReact className="w-8 h-8" />
+        <BiLogoFlask className="w-8 h-8" />
+        <BiLogoTailwindCss className="w-8 h-8" />
+        <SiMysql className="w-8 h-8" />
       </div>
+
+
     </div>
   );
 }
