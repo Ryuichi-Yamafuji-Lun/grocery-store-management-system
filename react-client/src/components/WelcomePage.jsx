@@ -17,35 +17,37 @@ const WelcomePage = () => {
   return (
     <div className='w-full min-h-screen'>
       {/* Header */}
-      <div className='p-4'>
-        <div>
-          <img
-            src={GSMSLogo}
-            alt='GSMS Logo'
-            width={100}
-          />
+      <div className='p-4 h-screen w-screen flex flex-col relative'>
+        <div className='absolute top-0 left-0 pl-4 pt-4'>
+          <img src={GSMSLogo} alt='GSMS Logo' width={100} />
         </div>
-        <div className='grid grid-cols-5 pt-10'>
-          <div className='text-5xl col-start-2 col-span-2 place-self-center pr-2 lg:text-7xl'>
-            <p>Bringing <span className='font-bold text-light-green italic'>Freshness</span></p>
-            <p>to your <span className='font-bold text-light-green italic'>Management</span></p>
-            <div className="flex space-x-2 pt-3 text-xl lg:text-2xl text-center">
-              <div className="flex space-x-2 pt-3 text-xl lg:text-2xl text-center">
-                <Link to="/mainpage" className="bg-light-green text-white py-2 px-2 rounded-md flex items-center transition hover:bg-dark-green hover:scale-105">
-                  <span className="group-hover:underline font-bold pr-1">
-                    Start
-                  </span>{" "}
-                  <AiOutlineArrowRight />
-                </Link>
+        <div className='flex-grow flex items-center justify-center'>
+          <div className='grid grid-cols-5'>
+            <div className='text-5xl col-start-2 col-span-2 place-self-center pr-2 lg:text-7xl'>
+              <p>
+                Bringing <span className='font-bold text-light-green italic'>Freshness</span>
+              </p>
+              <p>
+                to your <span className='font-bold text-light-green italic'>Management</span>
+              </p>
+              <div className='flex space-x-2 pt-3 text-xl lg:text-2xl text-center'>
+                <div className='flex space-x-2 pt-3 text-xl lg:text-2xl text-center'>
+                  <Link to='/mainpage' className='bg-light-green text-white py-2 px-2 rounded-md flex items-center transition hover:bg-dark-green hover:scale-105'>
+                    <span className='group-hover:underline font-bold pr-1'>
+                      Start
+                    </span>{" "}
+                    <AiOutlineArrowRight />
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>
-          <div className='col-start-4 col-span-2 place-self-center'>
-            <img
-              src={GSMain}
-              alt='GSMain'
-              className='border-4 border-light-green rounded sm:w-11/12 md:w-11/12 xl:w-1/2'
-            />
+            <div className='col-start-4 col-span-2 place-self-center'>
+              <img
+                src={GSMain}
+                alt='GSMain'
+                className='border-4 border-light-green rounded sm:w-11/12 md:w-11/12 xl:w-1/2'
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -53,7 +55,7 @@ const WelcomePage = () => {
       {/* System */}
       <div className='w-full bg-light-green p-4'>
         <div className='text-center text-bold text-white text-4xl p-2'>
-          System
+          Accessable System!
         </div>
         <div className='grid grid-cols-3 place-items-center pt-4'>
           <img
