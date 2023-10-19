@@ -10,7 +10,7 @@ module.exports = {
         'background-main': '#FFFFFF',
         'background-second': '#F8F7F5',
         'line-color': '#000000',
-        'light-green': '#479B7C',
+        'light-green': '#31C48D',
         'dark-green': '#00674b',
         'return-color': '#C6C6C6',
       },

@@ -1,7 +1,7 @@
 
 const WelcomeLayout = ({ children }) => {
   return (
-    <div className="col-span-7">
+    <div>
       {children}
     </div>
   );
