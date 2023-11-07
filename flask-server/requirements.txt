@@ -13,4 +13,4 @@ packaging==23.1
 protobuf==4.21.12
 psutil==5.9.5
 python-dotenv==1.0.0
-Werkzeug==2.3.6
+Werkzeug==3.0.1
