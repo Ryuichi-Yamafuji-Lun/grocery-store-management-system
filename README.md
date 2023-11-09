@@ -13,4 +13,4 @@ The project is a full-stack management system with MySQL as a database to store 
 Flask as the API that handles the CRUD operation (Create, Read, Update, Delete), and finally, React and TailwindCSS
 were used to build the front end.
 ## Deployment
-This project is deployed using Hostinger
+This project is deployed using Hostinger and Render
