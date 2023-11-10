@@ -11,6 +11,7 @@ def get_mysql_connection():
             password= os.environ['DB_PASSWORD'],
             host= os.environ['DB_HOST'],
             database= os.environ['DB_NAME'],
+            port=os.environ.get('DB_PORT', 3306),
         )
         return connection
     except mysql.connector.Error as e:
